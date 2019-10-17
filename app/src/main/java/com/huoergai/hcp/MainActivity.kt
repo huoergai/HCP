@@ -12,6 +12,7 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+
         val btnLucky = findViewById<Button>(R.id.main_btn_lucky)
         btnLucky.setOnClickListener {
             startActivity(Intent(this@MainActivity, TestActivity::class.java))
