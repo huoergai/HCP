@@ -1,6 +1,9 @@
 package com.huoergai.hcp
 
 import android.content.res.Resources
+import android.graphics.Bitmap
+import android.graphics.BitmapFactory
+import android.util.Log
 import android.util.TypedValue
 
 class Utils {
@@ -11,6 +14,36 @@ class Utils {
                 dp,
                 Resources.getSystem().displayMetrics
             )
+        }
+
+        fun scaleImage(resources: Resources, reqWidth: Float, reqHeight: Float): Bitmap {
+            // get image information
+            val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
+            BitmapFactory.decodeResource(resources, R.drawable.kitty, options)
+            Log.d("CircleAvatarView", "img type: " + options.outMimeType)
+            Log.d("CircleAvatarView", "img w: " + options.outWidth)
+            Log.d("CircleAvatarView", "img h: " + options.outHeight)
+
+            // scale image to the given dimension but keep its original aspect-ratio
+            val ow = options.outWidth
+            val oh = options.outHeight
+
+            var sampleSize = 1
+
+            if (oh > reqHeight || ow > reqWidth) {
+                val halfHeight = oh / 2
+                val halfWidth = ow / 2
+                while (halfHeight / sampleSize >= reqHeight && halfWidth / sampleSize >= reqWidth) {
+                    sampleSize++
+                }
+            }
+            options.inSampleSize = sampleSize
+            options.inJustDecodeBounds = false
+            val scaledBitmap = BitmapFactory.decodeResource(resources, R.drawable.kitty, options)
+            Log.d("CircleAvatarView", "img type: " + options.outMimeType)
+            Log.d("CircleAvatarView", "img w: " + options.outWidth)
+            Log.d("CircleAvatarView", "img h: " + options.outHeight)
+            return scaledBitmap
         }
     }
 }

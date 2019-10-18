@@ -13,7 +13,7 @@ class DashboardView(context: Context, attrs: AttributeSet?) : View(context, attr
     constructor(context: Context) : this(context, null)
 
     companion object {
-        private const val radius: Float = 200f
+        private var radius: Float = 120f
         private const val open_angle: Int = 90
         private const val index_count: Int = 20
         private const val current_index: Int = 10
@@ -37,6 +37,7 @@ class DashboardView(context: Context, attrs: AttributeSet?) : View(context, attr
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
+        radius = w.coerceAtMost(h)/2 - Utils.dp2px(10f)
 
         archPath.reset()
         sweepGradient = SweepGradient(

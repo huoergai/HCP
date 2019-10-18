@@ -6,22 +6,30 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
-    <Button
-        android:id="@+id/main_btn_lucky"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="@string/lucky"
+    <com.huoergai.hcp.lesson09.DashboardView
+        android:id="@+id/main_item_1"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/main_item_2"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
-    <com.huoergai.hcp.lesson09.CircleAvatarView
-        android:layout_width="378dp"
-        android:layout_height="378dp"
+    <com.huoergai.hcp.lesson09.PieChartView
+        android:id="@+id/main_item_2"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
+        app:layout_constraintBottom_toTopOf="@id/main_item_3"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/main_item_1" />
+
+    <com.huoergai.hcp.lesson10.DrawTextView
+        android:id="@+id/main_item_3"
+        android:layout_width="match_parent"
+        android:layout_height="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/main_btn_lucky" />
-
-
+        app:layout_constraintTop_toBottomOf="@+id/main_item_2" />
 </androidx.constraintlayout.widget.ConstraintLayout>
