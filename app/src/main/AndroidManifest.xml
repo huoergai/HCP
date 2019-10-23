@@ -19,6 +19,9 @@
             </intent-filter>
         </activity>
         <activity android:name=".http.TestActivity" />
+        <activity android:name=".lesson10.L10Activity"  />
+        <activity android:name=".lesson11.L11Activity" />
+        <activity android:name=".lesson12.L12Activity" />
     </application>
 
 </manifest>

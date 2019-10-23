@@ -1,4 +1,4 @@
-package com.huoergai.hcp.lesson09
+package com.huoergai.hcp.lesson10
 
 import android.content.Context
 import android.graphics.*
@@ -7,44 +7,48 @@ import android.view.View
 import com.huoergai.hcp.Utils
 
 
-class CircleAvatarView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
+class AvatarView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
-    private val edge_color = Color.parseColor("#4081ED")
+    private val edgeColor = Color.parseColor("#4081ED")
     private val xFermode = PorterDuffXfermode(PorterDuff.Mode.SRC_IN)
-    private val edge_width = Utils.dp2px(10f)
+    private val edgeWidth = Utils.dp2px(5f)
+    private var radius: Float = 0.0f
+    private val gap_offset = Utils.dp2px(2f)
 
     constructor(context: Context) : this(context, null)
-
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         val bitmap = Utils.scaleImage(resources, width.toFloat(), height.toFloat())
-
+        radius = bitmap.width.coerceAtMost(bitmap.height) / 2f
         // 画边缘
-        paint.color = edge_color
+        paint.color = edgeColor
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = edgeWidth
         canvas.drawCircle(
             width / 2f,
             height / 2f,
-            bitmap.width.coerceAtMost(bitmap.height) / 2f + edge_width,
+            radius,
             paint
         )
 
+        paint.style = Paint.Style.FILL
         val saveLayer = canvas.saveLayer(0f, 0f, width.toFloat(), height.toFloat(), paint)
-
-        paint.strokeWidth = Utils.dp2px(4f)
+        paint.color = Color.WHITE
         canvas.drawCircle(
             width / 2f,
             height / 2f,
-            bitmap.width.coerceAtMost(bitmap.height) / 2f + edge_width,
+            radius - paint.strokeWidth / 2 - gap_offset,
             paint
         )
 
         paint.xfermode = xFermode
+        // 画头像
         canvas.drawBitmap(
             bitmap,
-            width / 2f - bitmap.width / 2f,
-            height / 2f - bitmap.height / 2f,
+            width / 2f - bitmap.width / 2 + paint.strokeWidth / 2,
+            height / 2f - bitmap.height / 2 + paint.strokeWidth / 2,
             paint
         )
         paint.xfermode = null

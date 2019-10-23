@@ -16,13 +16,17 @@ class Utils {
             )
         }
 
+        fun getZForCamera(): Float {
+            return -4 * Resources.getSystem().displayMetrics.density
+        }
+
         fun scaleImage(resources: Resources, reqWidth: Float, reqHeight: Float): Bitmap {
             // get image information
             val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
             BitmapFactory.decodeResource(resources, R.drawable.kitty, options)
-            Log.d("CircleAvatarView", "img type: " + options.outMimeType)
-            Log.d("CircleAvatarView", "img w: " + options.outWidth)
-            Log.d("CircleAvatarView", "img h: " + options.outHeight)
+            Log.d("AvatarView", "img type: " + options.outMimeType)
+            Log.d("AvatarView", "img w: " + options.outWidth)
+            Log.d("AvatarView", "img h: " + options.outHeight)
 
             // scale image to the given dimension but keep its original aspect-ratio
             val ow = options.outWidth
@@ -33,16 +37,16 @@ class Utils {
             if (oh > reqHeight || ow > reqWidth) {
                 val halfHeight = oh / 2
                 val halfWidth = ow / 2
-                while (halfHeight / sampleSize >= reqHeight && halfWidth / sampleSize >= reqWidth) {
+                while (halfHeight / sampleSize >= reqHeight || halfWidth / sampleSize >= reqWidth) {
                     sampleSize++
                 }
             }
             options.inSampleSize = sampleSize
             options.inJustDecodeBounds = false
             val scaledBitmap = BitmapFactory.decodeResource(resources, R.drawable.kitty, options)
-            Log.d("CircleAvatarView", "img type: " + options.outMimeType)
-            Log.d("CircleAvatarView", "img w: " + options.outWidth)
-            Log.d("CircleAvatarView", "img h: " + options.outHeight)
+            Log.d("AvatarView", "img type: " + options.outMimeType)
+            Log.d("AvatarView", "img w: " + options.outWidth)
+            Log.d("AvatarView", "img h: " + options.outHeight)
             return scaledBitmap
         }
     }

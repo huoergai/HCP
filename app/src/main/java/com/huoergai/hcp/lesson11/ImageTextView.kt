@@ -1,18 +1,23 @@
-package com.huoergai.hcp.lesson10
+package com.huoergai.hcp.lesson11
 
 import android.content.Context
 import android.graphics.Canvas
 import android.graphics.Paint
 import android.graphics.Rect
+import android.os.Build
+import android.text.Layout
+import android.text.StaticLayout
+import android.text.TextPaint
 import android.util.AttributeSet
 import android.view.View
 import com.huoergai.hcp.Utils
 
-class DrawTextView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
+class ImageTextView(context: Context, attrs: AttributeSet?) : View(context, attrs) {
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
+    private val textPaint = TextPaint(Paint.ANTI_ALIAS_FLAG)
     private val textBounds = Rect()
-
+    private var staticLayout: StaticLayout? = null
     private val text =
         "The Eve of St. Agnes St. Agnes’ Eve—Ah, bitter chill it was! The owl, for all his feathers, was a-cold;" +
                 "The hare limp’d trembling through the frozen grass," +
@@ -28,6 +33,26 @@ class DrawTextView(context: Context, attrs: AttributeSet?) : View(context, attrs
 
     constructor(context: Context) : this(context, null)
 
+    override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
+        super.onSizeChanged(w, h, oldw, oldh)
+
+        staticLayout = if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.M) {
+            StaticLayout.Builder.obtain(text, 0, text.length, textPaint, w).build()
+        } else {
+            StaticLayout(
+                text,
+                0,
+                text.length,
+                textPaint,
+                w,
+                Layout.Alignment.ALIGN_NORMAL,
+                1f,
+                0f,
+                true
+            )
+        }
+    }
+
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
@@ -35,6 +60,7 @@ class DrawTextView(context: Context, attrs: AttributeSet?) : View(context, attrs
         canvas.drawBitmap(bitmap, 0f, 0f, paint)
 
         paint.textSize = Utils.dp2px(14f)
+
         paint.getTextBounds(text, 0, text.length, textBounds)
 
         var start = 0
@@ -51,6 +77,8 @@ class DrawTextView(context: Context, attrs: AttributeSet?) : View(context, attrs
                 xOffset = 0f
                 width.toFloat()
             }
+
+            staticLayout?.draw(canvas)
 
             count = paint.breakText(
                 text, start, text.length, true, avaliableWidth, null

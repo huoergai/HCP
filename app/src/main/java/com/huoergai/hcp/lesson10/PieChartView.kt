@@ -1,4 +1,4 @@
-package com.huoergai.hcp.lesson09
+package com.huoergai.hcp.lesson10
 
 import android.content.Context
 import android.graphics.Canvas
@@ -15,15 +15,14 @@ class PieChartView(context: Context, attrs: AttributeSet?) : View(context, attrs
     constructor(context: Context) : this(context, null)
 
     companion object {
-        private val colors =
-            intArrayOf(
-                Color.parseColor("#5EA033"),
-                Color.parseColor("#0C8448"),
-                Color.parseColor("#EA6B21"),
-                Color.parseColor("#E25652"),
-                Color.parseColor("#4081ED"),
-                Color.parseColor("#EFA92C")
-            )
+        private val colors = intArrayOf(
+            Color.parseColor("#5EA033"),
+            Color.parseColor("#0C8448"),
+            Color.parseColor("#EA6B21"),
+            Color.parseColor("#E25652"),
+            Color.parseColor("#4081ED"),
+            Color.parseColor("#EFA92C")
+        )
         private val angles = floatArrayOf(80f, 20f, 60f, 45f, 120f, 35f)
         private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
         private val STANDOUT_OFFSET = Utils.dp2px(10f)

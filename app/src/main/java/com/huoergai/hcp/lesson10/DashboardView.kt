@@ -1,4 +1,4 @@
-package com.huoergai.hcp.lesson09
+package com.huoergai.hcp.lesson10
 
 import android.content.Context
 import android.graphics.*
@@ -13,23 +13,15 @@ class DashboardView(context: Context, attrs: AttributeSet?) : View(context, attr
     constructor(context: Context) : this(context, null)
 
     companion object {
+        private const val open_angle: Int = 120
         private var radius: Float = 120f
-        private const val open_angle: Int = 90
-        private const val index_count: Int = 20
-        private const val current_index: Int = 10
+        private var index_count: Int = 20
+        private var current_index: Int = 8
+        private var pointer_length = radius * 0.65f
     }
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var indexPathEffect: PathDashPathEffect? = null
-    private val linearGradient = LinearGradient(
-        100f,
-        0f,
-        300f,
-        0f,
-        Color.GREEN,
-        Color.YELLOW,
-        Shader.TileMode.CLAMP
-    )
     private var sweepGradient: SweepGradient? = null
     private var archPath: Path = Path()
     private var currentIndexAngle: Double = 0.0
@@ -37,7 +29,8 @@ class DashboardView(context: Context, attrs: AttributeSet?) : View(context, attr
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
         super.onSizeChanged(w, h, oldw, oldh)
-        radius = w.coerceAtMost(h)/2 - Utils.dp2px(10f)
+        radius = w.coerceAtMost(h) / 2 - Utils.dp2px(10f)
+        pointer_length = radius * 0.7f
 
         archPath.reset()
         sweepGradient = SweepGradient(
@@ -72,9 +65,11 @@ class DashboardView(context: Context, attrs: AttributeSet?) : View(context, attr
         )
 
         currentIndexAngle =
-            (90 + open_angle / 2 + (current_index / index_count) * (360 - open_angle)).toDouble()
+            (90 + open_angle / 2 + (360 - open_angle) / index_count * current_index).toDouble()
 
-        // paint.color = Color.GREEN
+        paint.style = Paint.Style.STROKE
+        paint.strokeWidth = Utils.dp2px(2f)
+        paint.shader = sweepGradient
 
         pointerPaint.strokeWidth = Utils.dp2px(3.5f)
         pointerPaint.color = Color.parseColor("#1E88E5")
@@ -83,24 +78,19 @@ class DashboardView(context: Context, attrs: AttributeSet?) : View(context, attr
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        paint.style = Paint.Style.STROKE
-        paint.strokeWidth = Utils.dp2px(2f)
-
         // 弧
-        paint.color = Color.parseColor("#001624")
         canvas.drawPath(archPath, paint)
-
         // 刻度
-        paint.shader = sweepGradient
         paint.pathEffect = indexPathEffect
         canvas.drawPath(archPath, paint)
+        paint.pathEffect = null
 
         // 指针
         canvas.drawLine(
             width / 2f,
             height / 2f,
-            (width / 2 + 0.6f * radius * cos(currentIndexAngle)).toFloat(),
-            (height / 2 + 0.6f * radius * sin(currentIndexAngle)).toFloat(),
+            width / 2f + pointer_length * cos(Math.toRadians(currentIndexAngle)).toFloat(),
+            height / 2f + pointer_length * sin(Math.toRadians(currentIndexAngle)).toFloat(),
             pointerPaint
         )
     }
