@@ -23,7 +23,5 @@ class DynamicView(context: Context, attrs: AttributeSet) : View(context, attrs) 
             paint
         )
 
-
-
     }
 }

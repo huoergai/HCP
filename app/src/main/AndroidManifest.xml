@@ -22,6 +22,7 @@
         <activity android:name=".lesson10.L10Activity"  />
         <activity android:name=".lesson11.L11Activity" />
         <activity android:name=".lesson12.L12Activity" />
+        <activity android:name=".lesson13.L13Activity" />
     </application>
 
 </manifest>

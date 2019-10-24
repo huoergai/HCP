@@ -41,14 +41,12 @@ class ImageTextView(context: Context, attrs: AttributeSet?) : View(context, attr
         } else {
             StaticLayout(
                 text,
-                0,
-                text.length,
                 textPaint,
                 w,
                 Layout.Alignment.ALIGN_NORMAL,
                 1f,
                 0f,
-                true
+                false
             )
         }
     }
@@ -77,8 +75,6 @@ class ImageTextView(context: Context, attrs: AttributeSet?) : View(context, attr
                 xOffset = 0f
                 width.toFloat()
             }
-
-            staticLayout?.draw(canvas)
 
             count = paint.breakText(
                 text, start, text.length, true, avaliableWidth, null
