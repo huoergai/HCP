@@ -10,6 +10,7 @@ import com.huoergai.hcp.lesson10.L10Activity
 import com.huoergai.hcp.lesson11.L11Activity
 import com.huoergai.hcp.lesson12.L12Activity
 import com.huoergai.hcp.lesson13.L13Activity
+import com.huoergai.hcp.lesson14.L14Activity
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,7 +25,8 @@ class MainActivity : AppCompatActivity() {
             L10Activity::class.java,
             L11Activity::class.java,
             L12Activity::class.java,
-            L13Activity::class.java
+            L13Activity::class.java,
+            L14Activity::class.java
         )
         rv.adapter = RvAdapter(datas)
     }

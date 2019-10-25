@@ -1,5 +1,6 @@
 package com.huoergai.hcp.proxy
 
+import com.huoergai.hcp.proxy.dynamic.ProxyHandler
 import com.huoergai.hcp.proxy.static_proxy.CookProxy
 import com.huoergai.hcp.proxy.static_proxy.TraditionalCook
 import java.lang.reflect.Proxy
@@ -17,8 +18,11 @@ class ProxyTest {
         // 动态代理
         val proxyClass = Proxy.getProxyClass(ClassLoader.getSystemClassLoader(), ICook::class.java)
         proxyClass.getConstructor()
-        Proxy.newProxyInstance(
+        val cook: ICook = Proxy.newProxyInstance(
             ClassLoader.getSystemClassLoader(),
-            Array(1) { ICook::class.java }) { proxy, method, args -> "" }
+            Array(1) { ICook::class.java },
+            ProxyHandler(traditionalCook)
+        ) as ICook
+        cook.cook()
     }
 }
