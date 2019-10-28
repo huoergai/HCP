@@ -11,7 +11,8 @@
         app:layout_constraintBottom_toTopOf="@id/l11_itv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_weight="1" />
 
     <com.huoergai.hcp.lesson11.ImageTextView
         android:id="@+id/l11_itv"
@@ -20,7 +21,8 @@
         app:layout_constraintBottom_toTopOf="@id/l11_cv"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/l11_sv" />
+        app:layout_constraintTop_toBottomOf="@+id/l11_sv"
+        app:layout_constraintVertical_weight="1" />
 
     <com.huoergai.hcp.lesson11.CameraView
         android:id="@+id/l11_cv"
@@ -29,5 +31,6 @@
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/l11_itv" />
+        app:layout_constraintTop_toBottomOf="@+id/l11_itv"
+        app:layout_constraintVertical_weight="1.5" />
 </androidx.constraintlayout.widget.ConstraintLayout>

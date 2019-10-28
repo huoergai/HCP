@@ -17,7 +17,17 @@ class Utils {
         }
 
         fun getZForCamera(): Float {
-            return -4 * Resources.getSystem().displayMetrics.density
+            return -8 * Resources.getSystem().displayMetrics.density
+        }
+
+        fun getAvatar(res: Resources, drawableRes: Int, width: Int): Bitmap {
+            val options = BitmapFactory.Options()
+            options.inJustDecodeBounds = true
+            BitmapFactory.decodeResource(res, drawableRes, options)
+            options.inDensity = options.outWidth
+            options.inTargetDensity = width
+            options.inJustDecodeBounds = false
+            return BitmapFactory.decodeResource(res, drawableRes, options)
         }
 
         fun scaleImage(resources: Resources, reqWidth: Float, reqHeight: Float): Bitmap {

@@ -6,6 +6,7 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
+import com.huoergai.hcp.R
 import com.huoergai.hcp.Utils
 
 /**
@@ -14,19 +15,49 @@ import com.huoergai.hcp.Utils
 class CameraView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private val camera = Camera()
-    private val img_offset = 80.0f
+    private var width_offset = 80.0f
+    private val height_offset = 20f
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
         // get camera ready
-        camera.rotateX(30f)
+        camera.rotateX(40f)
         camera.setLocation(0f, 0f, Utils.getZForCamera())
 
-        // draw img
-        val bitmap = Utils.scaleImage(resources, 0.9f * width, 0.9f * height)
-        // canvas.clipRect(0f, 0f, width.toFloat(), height / 2f)
-        canvas.drawBitmap(bitmap, img_offset, img_offset, paint)
+        val bitmap = Utils.getAvatar(resources, R.drawable.avatar_rengwuxian, (0.7 * width).toInt())
+        width_offset = (width - bitmap.width) / 2f
+
+        // draw and clip top half
+        canvas.save()
+        canvas.translate(width_offset + bitmap.width / 2, height_offset + bitmap.height / 2)
+        canvas.rotate(-30f)
+        canvas.clipRect(
+            -bitmap.width.toFloat(),
+            -bitmap.height.toFloat(),
+            bitmap.width.toFloat(),
+            0f
+        )
+        canvas.rotate(30f)
+        canvas.translate(-(width_offset + bitmap.width / 2), -(height_offset + bitmap.height / 2))
+        canvas.drawBitmap(bitmap, width_offset, height_offset, paint)
+        canvas.restore()
+
+        // draw and clip bottom half
+        canvas.save()
+        canvas.translate(width_offset + bitmap.width / 2, height_offset + bitmap.height / 2)
+        canvas.rotate(-30f)
+        camera.applyToCanvas(canvas)
+        canvas.clipRect(
+            -bitmap.width.toFloat(),
+            0f,
+            bitmap.width.toFloat(),
+            bitmap.height.toFloat()
+        )
+        canvas.rotate(30f)
+        canvas.translate(-(width_offset + bitmap.width / 2), -(height_offset + bitmap.height / 2))
+        canvas.drawBitmap(bitmap, width_offset, height_offset, paint)
+        canvas.restore()
 
     }
 
