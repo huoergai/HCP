@@ -27,13 +27,15 @@ class Utils {
             options.inDensity = options.outWidth
             options.inTargetDensity = width
             options.inJustDecodeBounds = false
-            return BitmapFactory.decodeResource(res, drawableRes, options)
+            val bitmap = BitmapFactory.decodeResource(res, drawableRes, options)
+            Log.d("Utils", "is bitmap null:" + (bitmap == null))
+            return bitmap
         }
 
         fun scaleImage(resources: Resources, reqWidth: Float, reqHeight: Float): Bitmap {
             // get image information
             val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
-            BitmapFactory.decodeResource(resources, R.drawable.kitty, options)
+            BitmapFactory.decodeResource(resources, R.drawable.shaw, options)
             Log.d("AvatarView", "img type: " + options.outMimeType)
             Log.d("AvatarView", "img w: " + options.outWidth)
             Log.d("AvatarView", "img h: " + options.outHeight)

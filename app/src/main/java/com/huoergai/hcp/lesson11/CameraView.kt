@@ -6,7 +6,6 @@ import android.graphics.Canvas
 import android.graphics.Paint
 import android.util.AttributeSet
 import android.view.View
-import com.huoergai.hcp.R
 import com.huoergai.hcp.Utils
 
 /**
@@ -25,7 +24,8 @@ class CameraView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         camera.rotateX(40f)
         camera.setLocation(0f, 0f, Utils.getZForCamera())
 
-        val bitmap = Utils.getAvatar(resources, R.drawable.avatar_rengwuxian, (0.7 * width).toInt())
+        // val bitmap = Utils.getAvatar(resources, R.drawable.avatar_rengwuxian, (0.7 * width).toInt())
+        val bitmap = Utils.scaleImage(resources, 0.7f * width, 0.7f * width)
         width_offset = (width - bitmap.width) / 2f
 
         // draw and clip top half

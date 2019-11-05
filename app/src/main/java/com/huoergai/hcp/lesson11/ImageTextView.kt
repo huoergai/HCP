@@ -54,7 +54,7 @@ class ImageTextView(context: Context, attrs: AttributeSet?) : View(context, attr
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
 
-        val bitmap = Utils.scaleImage(resources, Utils.dp2px(130f), Utils.dp2px(130f))
+        val bitmap = Utils.scaleImage(resources, Utils.dp2px(30f), Utils.dp2px(30f))
         canvas.drawBitmap(bitmap, 0f, 0f, paint)
 
         paint.textSize = Utils.dp2px(14f)

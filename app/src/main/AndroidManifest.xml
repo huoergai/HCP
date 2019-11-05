@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         tools:ignore="GoogleAppIndexingWarning">
-        <activity android:name=".lesson12.L12Activity">
+        <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -19,14 +19,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".MainActivity" />
+        <!--        <activity android:name=".MainActivity" />-->
 
         <activity android:name=".http.TestActivity" />
         <activity android:name=".lesson10.L10Activity" />
         <activity android:name=".lesson11.L11Activity" />
-        <!--        <activity android:name=".lesson12.L12Activity" />-->
+        <activity android:name=".lesson12.L12Activity" />
         <activity android:name=".lesson13.L13Activity" />
         <activity android:name=".lesson14.L14Activity" />
+        <activity android:name=".base.ShellActivity" />
     </application>
 
 </manifest>
