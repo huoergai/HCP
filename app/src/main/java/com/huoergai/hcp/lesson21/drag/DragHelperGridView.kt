@@ -21,7 +21,7 @@ class DragHelperGridView(context: Context, attr: AttributeSet) : ViewGroup(conte
     }
 
     init {
-        dragHelper = ViewDragHelper.create(this, MyDragHelper())
+        dragHelper = ViewDragHelper.create(this, MyDragHelper(this))
     }
 
     override fun onConfigurationChanged(newConfig: Configuration) {
@@ -72,22 +72,22 @@ class DragHelperGridView(context: Context, attr: AttributeSet) : ViewGroup(conte
     }
 
     override fun onInterceptTouchEvent(ev: MotionEvent): Boolean {
-        return Companion.dragHelper.shouldInterceptTouchEvent(ev)
+        return dragHelper.shouldInterceptTouchEvent(ev)
     }
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent): Boolean {
-        Companion.dragHelper.processTouchEvent(event)
+        dragHelper.processTouchEvent(event)
         return true
     }
 
     override fun computeScroll() {
-        if (Companion.dragHelper.continueSettling(true)) {
+        if (dragHelper.continueSettling(true)) {
             ViewCompat.postInvalidateOnAnimation(this)
         }
     }
 
-    private class MyDragHelper : ViewDragHelper.Callback() {
+    private class MyDragHelper(val view: View) : ViewDragHelper.Callback() {
         var capturedLeft: Int = 0
         var capturedTop: Int = 0
         override fun tryCaptureView(child: View, pointerId: Int): Boolean {
@@ -110,17 +110,15 @@ class DragHelperGridView(context: Context, attr: AttributeSet) : ViewGroup(conte
         }
 
         override fun onViewCaptured(capturedChild: View, activePointerId: Int) {
-            super.onViewCaptured(capturedChild, activePointerId)
             capturedChild.elevation = capturedChild.elevation + 1
             capturedLeft = capturedChild.left
             capturedTop = capturedChild.top
         }
 
         override fun onViewReleased(releasedChild: View, xvel: Float, yvel: Float) {
-            super.onViewReleased(releasedChild, xvel, yvel)
-            // roll back
+            // settle view back to start position
             dragHelper.settleCapturedViewAt(capturedLeft, capturedTop)
-            // TODO
+            view.postInvalidateOnAnimation()
         }
     }
 }

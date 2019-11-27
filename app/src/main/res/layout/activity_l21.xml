@@ -15,21 +15,6 @@
         <View
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:background="#EF5350" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#9C27B0" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:background="#1E88E5" />
-
-        <View
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
             android:background="#00695C" />
 
         <View
@@ -41,6 +26,21 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#546E7A" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#EF5350" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#9C27B0" />
+
+        <View
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:background="#1E88E5" />
     </com.huoergai.hcp.lesson21.drag.DragListenerGridView>
 
     <com.huoergai.hcp.lesson21.drag.DragHelperGridView
