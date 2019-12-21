@@ -1,2 +1,3 @@
-include ':app'
+include ':37pluginable'
 rootProject.name='HCP'
+include ':app'

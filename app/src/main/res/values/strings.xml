@@ -1,4 +1,8 @@
 <resources>
     <string name="app_name">HCP</string>
     <string name="lucky">lucky</string>
+    <string name="sure">sure</string>
+    <string name="mvp">MVp</string>
+    <string name="mvc">MVC</string>
+    <string name="mvvm">MVVM</string>
 </resources>

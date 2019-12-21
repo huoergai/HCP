@@ -3,7 +3,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.huoergai.hcp">
 
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+    <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
+
     <application
+        android:name=".HcpApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -15,20 +19,25 @@
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
+                <category android:name="android.intent.category.DEFAULT" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
 
-        <!--        <activity android:name=".MainActivity" />-->
-
+        <activity android:name=".base.ShellActivity" />
         <activity android:name=".http.TestActivity" />
         <activity android:name=".lesson10.L10Activity" />
         <activity android:name=".lesson11.L11Activity" />
         <activity android:name=".lesson12.L12Activity" />
         <activity android:name=".lesson13.L13Activity" />
         <activity android:name=".lesson14.L14Activity" />
-        <activity android:name=".base.ShellActivity" />
         <activity android:name=".lesson21.L21Activity" />
+        <activity android:name=".lesson36.L36Activity" />
+        <activity android:name=".lesson36.mvc.MvcActivity" />
+        <activity android:name=".lesson36.mvvm.MvvmActivity" />
+        <activity android:name=".lesson36.mvp.MvpActivity" />
+        <activity android:name=".lesson37.L37Activity" />
+
     </application>
 
 </manifest>
