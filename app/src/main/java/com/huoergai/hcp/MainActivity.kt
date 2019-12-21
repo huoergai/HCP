@@ -20,7 +20,6 @@ class MainActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
-
         val rv: RecyclerView = findViewById(R.id.main_rv)
         rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rv.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
