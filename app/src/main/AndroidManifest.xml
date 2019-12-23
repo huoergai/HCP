@@ -26,18 +26,18 @@
 
         <activity android:name=".base.ShellActivity" />
         <activity android:name=".http.TestActivity" />
-        <activity android:name=".base.ShellActivity" />
-        <activity android:name=".lesson10.L10Activity" />
-        <activity android:name=".lesson11.L11Activity" />
-        <activity android:name=".lesson12.L12Activity" />
-        <activity android:name=".lesson13.L13Activity" />
-        <activity android:name=".lesson14.L14Activity" />
-        <activity android:name=".lesson21.L21Activity" />
-        <activity android:name=".lesson36.L36Activity" />
-        <activity android:name=".lesson36.mvc.MvcActivity" />
-        <activity android:name=".lesson36.mvvm.MvvmActivity" />
-        <activity android:name=".lesson36.mvp.MvpActivity" />
-        <activity android:name=".lesson37.L37Activity" />
+        <activity android:name=".l10text_transfermation.L10Activity" />
+        <activity android:name=".l11animation.L11Activity" />
+        <activity android:name=".l12bitmap_drawable.L12Activity" />
+        <activity android:name=".l13constraintlayout.L13Activity" />
+        <activity android:name=".l14motionlayout.L14Activity" />
+        <activity android:name=".l21drag_nestedscroll.L21Activity" />
+        <activity android:name=".l36arch.L36Activity" />
+        <activity android:name=".l36arch.mvc.MvcActivity" />
+        <activity android:name=".l36arch.mvvm.MvvmActivity" />
+        <activity android:name=".l36arch.mvp.MvpActivity" />
+        <activity android:name=".l37plugin.L37Activity" />
+        <activity android:name=".l38hotfix.L38Activity" />
 
     </application>
 

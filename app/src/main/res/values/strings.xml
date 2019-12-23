@@ -5,4 +5,9 @@
     <string name="mvp">MVp</string>
     <string name="mvc">MVC</string>
     <string name="mvvm">MVVM</string>
+    <string name="show">show</string>
+    <string name="hotfix">hotfix</string>
+    <string name="remove_hotfix">remove_hotfix</string>
+    <string name="kill">kill</string>
+    <string name="load_plugin">load plugin</string>
 </resources>

@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.huoergai.hcp.lesson13.MaterialEditText
+    <com.huoergai.hcp.l13constraintlayout.MaterialEditText
         android:id="@+id/l13_met"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_chainStyle="spread" />
 
-    <com.huoergai.hcp.lesson13.MeshView
+    <com.huoergai.hcp.l13constraintlayout.MeshView
         android:id="@+id/l13_mv"
         android:layout_width="match_parent"
         android:layout_height="0dp"

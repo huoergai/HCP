@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.huoergai.hcp.lesson11.SportView
+    <com.huoergai.hcp.l11animation.SportView
         android:id="@+id/l11_sv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -14,7 +14,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="1" />
 
-    <com.huoergai.hcp.lesson11.ImageTextView
+    <com.huoergai.hcp.l11animation.ImageTextView
         android:id="@+id/l11_itv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -24,7 +24,7 @@
         app:layout_constraintTop_toBottomOf="@+id/l11_sv"
         app:layout_constraintVertical_weight="1" />
 
-    <com.huoergai.hcp.lesson11.CameraView
+    <com.huoergai.hcp.l11animation.CameraView
         android:id="@+id/l11_cv"
         android:layout_width="match_parent"
         android:layout_height="0dp"

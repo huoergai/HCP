@@ -6,14 +6,15 @@ import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
 import com.huoergai.hcp.base.RvAdapter
-import com.huoergai.hcp.lesson10.L10Activity
-import com.huoergai.hcp.lesson11.L11Activity
-import com.huoergai.hcp.lesson12.L12Activity
-import com.huoergai.hcp.lesson13.L13Activity
-import com.huoergai.hcp.lesson14.L14Activity
-import com.huoergai.hcp.lesson21.L21Activity
-import com.huoergai.hcp.lesson36.L36Activity
-import com.huoergai.hcp.lesson37.L37Activity
+import com.huoergai.hcp.l10text_transfermation.L10Activity
+import com.huoergai.hcp.l11animation.L11Activity
+import com.huoergai.hcp.l12bitmap_drawable.L12Activity
+import com.huoergai.hcp.l13constraintlayout.L13Activity
+import com.huoergai.hcp.l14motionlayout.L14Activity
+import com.huoergai.hcp.l21drag_nestedscroll.L21Activity
+import com.huoergai.hcp.l36arch.L36Activity
+import com.huoergai.hcp.l37plugin.L37Activity
+import com.huoergai.hcp.l38hotfix.L38Activity
 
 class MainActivity : AppCompatActivity() {
 
@@ -32,7 +33,8 @@ class MainActivity : AppCompatActivity() {
             L14Activity::class.java,
             L21Activity::class.java,
             L36Activity::class.java,
-            L37Activity::class.java
+            L37Activity::class.java,
+            L38Activity::class.java
         )
         rv.adapter = RvAdapter(datas)
     }

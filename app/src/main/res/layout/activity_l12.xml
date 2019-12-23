@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.huoergai.hcp.lesson12.RollTextView
+    <com.huoergai.hcp.l12bitmap_drawable.RollTextView
         android:id="@+id/l12_rtv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -15,7 +15,7 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_weight="0.3" />
 
-    <com.huoergai.hcp.lesson12.PointView
+    <com.huoergai.hcp.l12bitmap_drawable.PointView
         android:id="@+id/l12_pv"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -25,7 +25,7 @@
         app:layout_constraintTop_toBottomOf="@id/l12_rtv"
         app:layout_constraintVertical_weight="0.6" />
 
-    <com.huoergai.hcp.lesson12.CircleView
+    <com.huoergai.hcp.l12bitmap_drawable.CircleView
         android:id="@+id/l12_cv"
         android:layout_width="0dp"
         android:layout_height="0dp"
@@ -36,7 +36,7 @@
         app:layout_constraintVertical_weight="0.6" />
 
 
-    <com.huoergai.hcp.lesson12.DynamicView
+    <com.huoergai.hcp.l12bitmap_drawable.DynamicView
         android:id="@+id/l12_dv"
         android:layout_width="match_parent"
         android:layout_height="0dp"
