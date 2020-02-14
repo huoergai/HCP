@@ -1,7 +1,14 @@
 package com.huoergai.hcp.lesson28
 
+import android.os.Build
 import java.io.*
+import java.net.InetSocketAddress
 import java.net.ServerSocket
+import java.nio.ByteBuffer
+import java.nio.channels.SelectionKey
+import java.nio.channels.Selector
+import java.nio.channels.ServerSocketChannel
+import java.nio.charset.Charset
 import java.text.SimpleDateFormat
 import java.util.*
 
@@ -14,7 +21,45 @@ fun main() {
     // io3()
     // io4()
     // io5()
-    io6()
+    // io6()
+    // io7()
+    io8()
+}
+
+/**
+ * NIO 2
+ */
+fun io8() {
+    val ssc = ServerSocketChannel.open()
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.N) {
+        ssc.bind(InetSocketAddress(8080))
+        ssc.configureBlocking(false)
+        ssc.register(Selector.open(), SelectionKey.OP_ACCEPT)
+        val socketChannel = ssc.accept()
+        val ba = ByteBuffer.allocate(1024)
+        var len = 0
+        while (len != -1) {
+            len = socketChannel.read(ba)
+            ba.flip()
+            socketChannel.write(ba)
+            socketChannel.close()
+        }
+        ba.clear()
+    }
+}
+
+/**
+ * NIO 1
+ */
+fun io7() {
+    val ra = RandomAccessFile(FILE_NAME, "r")
+    val fileChannel = ra.channel
+    val bb = ByteBuffer.allocate(1024)
+    fileChannel.read(bb)
+    bb.flip()
+    val str = Charset.defaultCharset().decode(bb)
+    println("nio1 file content ==>\n$str")
+    bb.clear()
 }
 
 /**
@@ -30,7 +75,7 @@ fun io6() {
     var tmp = ""
     while (tmp != "-1") {
         tmp = br.readLine()
-        bw.write("echo: $tmp\n")
+        bw.write("echo: $tmp\n\r")
         bw.flush()
     }
 }

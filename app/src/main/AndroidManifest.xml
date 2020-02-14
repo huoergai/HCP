@@ -29,6 +29,8 @@
         <activity android:name=".lesson13.L13Activity" />
         <activity android:name=".lesson14.L14Activity" />
         <activity android:name=".lesson21.L21Activity" />
+        <activity android:name=".lesson40.L40Activity" />
+        <activity android:name=".preference.SetActivity" />
     </application>
 
 </manifest>

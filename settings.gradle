@@ -1,2 +1,6 @@
+include ':40_lib_processor'
+include ':40_lib_annotation'
+include ':40_lib'
+include ':40_lib_reflect'
 include ':app'
 rootProject.name='HCP'

@@ -1,4 +1,7 @@
 <resources>
     <string name="app_name">HCP</string>
     <string name="lucky">lucky</string>
+    <string name="sure">sure</string>
+    <string name="data">success</string>
+    <string name="submit">submit</string>
 </resources>
