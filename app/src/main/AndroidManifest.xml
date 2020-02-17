@@ -3,7 +3,10 @@
     xmlns:tools="http://schemas.android.com/tools"
     package="com.huoergai.hcp">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+
     <application
+        android:name=".CourseApp"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
@@ -29,8 +32,9 @@
         <activity android:name=".lesson13.L13Activity" />
         <activity android:name=".lesson14.L14Activity" />
         <activity android:name=".lesson21.L21Activity" />
+        <activity android:name=".lesson37.L37Activity" />
+        <activity android:name=".lesson38.L38Activity" />
         <activity android:name=".lesson40.L40Activity" />
-        <activity android:name=".preference.SetActivity" />
     </application>
 
 </manifest>

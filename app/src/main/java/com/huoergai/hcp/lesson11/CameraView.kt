@@ -25,7 +25,7 @@ class CameraView(context: Context, attrs: AttributeSet) : View(context, attrs) {
         camera.setLocation(0f, 0f, Utils.getZForCamera())
 
         // val bitmap = Utils.getAvatar(resources, R.drawable.avatar_rengwuxian, (0.7 * width).toInt())
-        val bitmap = Utils.scaleImage(resources, 0.7f * width, 0.7f * width)
+        val bitmap = Utils.scaleImage(resources, 0.5f * width, 0.5f * width)
         width_offset = (width - bitmap.width) / 2f
 
         // draw and clip top half

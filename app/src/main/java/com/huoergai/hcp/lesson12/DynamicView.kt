@@ -16,7 +16,7 @@ class DynamicView(context: Context, attrs: AttributeSet) : View(context, attrs) 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
         // val bitmap = Utils.getAvatar(resources, R.drawable.shaw, (0.8f * width).toInt())
-        val bitmap = Utils.scaleImage(resources, 0.8f * width, 0.8f * width)
+        val bitmap = Utils.scaleImage(resources, 0.5f * width, 0.5f * width)
         canvas.drawBitmap(
             bitmap,
             width / 2f - bitmap.width / 2f,

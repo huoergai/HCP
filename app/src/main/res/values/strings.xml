@@ -4,4 +4,9 @@
     <string name="sure">sure</string>
     <string name="data">success</string>
     <string name="submit">submit</string>
+    <string name="hotfix">hotfix</string>
+    <string name="show">show</string>
+    <string name="msg">message</string>
+    <string name="remove_hotfix">remo hotfix</string>
+    <string name="kill_process">kill process</string>
 </resources>

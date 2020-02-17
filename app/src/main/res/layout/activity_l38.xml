@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:padding="20dp">
+
+    <EditText
+        android:id="@+id/l38_et"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:autofillHints="@string/app_name"
+        android:gravity="center"
+        android:hint="@string/msg"
+        android:inputType="text"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <Button
+        android:id="@+id/l38_btn_show"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="20dp"
+        android:text="@string/show"
+        app:layout_constraintTop_toBottomOf="@id/l38_et" />
+
+    <Button
+        android:id="@+id/l38_btn_hotfix"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/hotfix"
+        app:layout_constraintTop_toBottomOf="@id/l38_btn_show" />
+
+    <Button
+        android:id="@+id/l38_btn_remove"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/remove_hotfix"
+        app:layout_constraintTop_toBottomOf="@id/l38_btn_hotfix" />
+
+    <Button
+        android:id="@+id/l38_btn_kill_process"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/kill_process"
+        app:layout_constraintTop_toBottomOf="@id/l38_btn_remove" />
+</androidx.constraintlayout.widget.ConstraintLayout>

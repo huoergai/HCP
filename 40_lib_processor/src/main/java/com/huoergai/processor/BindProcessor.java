@@ -88,6 +88,7 @@ public class BindProcessor extends AbstractProcessor {
         */
 
         // 生成 TTest class 文件
+
         /*
         ClassName className = ClassName.get("com.huoergai.hcp.lesson40", "TTest");
         TypeSpec typeSpec = TypeSpec.classBuilder(className).build();
@@ -101,7 +102,7 @@ public class BindProcessor extends AbstractProcessor {
         }
         */
 
-        return true;
+        return false;
     }
 
     @Override

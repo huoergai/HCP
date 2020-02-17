@@ -8,4 +8,5 @@ class CookProxy(private val realCook: ICook) : ICook {
         println("proxy cooking")
         return "dishes" + realCook.cook()
     }
+
 }

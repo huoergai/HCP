@@ -20,7 +20,7 @@ class AvatarView(context: Context, attrs: AttributeSet?) : View(context, attrs) 
 
     override fun onDraw(canvas: Canvas) {
         super.onDraw(canvas)
-        val bitmap = Utils.scaleImage(resources, 0.6f*width, 0.6f*width)
+        val bitmap = Utils.scaleImage(resources, 0.5f*width, 0.5f*width)
         radius = bitmap.width.coerceAtMost(bitmap.height) / 2f
         // 画边缘
         paint.color = edgeColor

@@ -27,7 +27,7 @@ public class Binding {
         // 等价调用
         // new L40ActivityBinding((L40Activity) activity);
         try {
-            Class<?> bindingClass = Class.forName(activity.getClass().getCanonicalName() + "ViewBinding");
+            Class<?> bindingClass = Class.forName(activity.getClass().getCanonicalName() + "Binding");
             Constructor<?> bindingClassConstructor = bindingClass.getDeclaredConstructor(activity.getClass());
             bindingClassConstructor.newInstance(activity);
         } catch (ClassNotFoundException e) {
