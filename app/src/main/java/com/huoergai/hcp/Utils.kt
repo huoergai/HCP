@@ -5,9 +5,28 @@ import android.graphics.Bitmap
 import android.graphics.BitmapFactory
 import android.util.Log
 import android.util.TypedValue
+import kotlin.random.Random
 
 class Utils {
     companion object {
+        private const val basic = "0123456789AaBbCcDdEeFfGgHhIiJjKkLlMmNnOoPpQqRrSsTtUuVvWwXxYyZz"
+
+        /**
+         * 获取指定长度的随机字符串 [0,9] [a,z] [A,Z]
+         */
+        @JvmStatic
+        fun randomString(len: Int): String {
+            val ret = StringBuilder()
+            for (i in 1..len) {
+                val index = Random.nextInt(0, 61)
+                ret.append(basic[index])
+            }
+            return ret.toString()
+        }
+
+        /**
+         * convert dp to px base on device display density
+         */
         fun dp2px(dp: Float): Float {
             return TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP,
@@ -16,10 +35,16 @@ class Utils {
             )
         }
 
+        /**
+         * get scaled z of camera
+         */
         fun getZForCamera(): Float {
             return -8 * Resources.getSystem().displayMetrics.density
         }
 
+        /**
+         * 获取头像
+         */
         fun getAvatar(res: Resources, drawableRes: Int, width: Int): Bitmap {
             val options = BitmapFactory.Options()
             options.inJustDecodeBounds = true
@@ -32,6 +57,9 @@ class Utils {
             return bitmap
         }
 
+        /**
+         * 图片资源伸缩
+         */
         fun scaleImage(resources: Resources, reqWidth: Float, reqHeight: Float): Bitmap {
             // get image information
             val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }

@@ -12,6 +12,7 @@ import com.huoergai.hcp.lesson12.L12Activity
 import com.huoergai.hcp.lesson13.L13Activity
 import com.huoergai.hcp.lesson14.L14Activity
 import com.huoergai.hcp.lesson21.L21Activity
+import com.huoergai.hcp.lesson36.L36Activity
 import com.huoergai.hcp.lesson37.L37Activity
 import com.huoergai.hcp.lesson38.L38Activity
 import com.huoergai.hcp.lesson40.L40Activity
@@ -32,6 +33,7 @@ class MainActivity : AppCompatActivity() {
             L13Activity::class.java,
             L14Activity::class.java,
             L21Activity::class.java,
+            L36Activity::class.java,
             L37Activity::class.java,
             L38Activity::class.java,
             L40Activity::class.java

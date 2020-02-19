@@ -32,6 +32,10 @@
         <activity android:name=".lesson13.L13Activity" />
         <activity android:name=".lesson14.L14Activity" />
         <activity android:name=".lesson21.L21Activity" />
+        <activity android:name=".lesson36.L36Activity" />
+        <activity android:name=".lesson36.mvc.MvcActivity" />
+        <activity android:name=".lesson36.mvp.MvpActivity" />
+        <activity android:name=".lesson36.mvvm.MvvmActivity" />
         <activity android:name=".lesson37.L37Activity" />
         <activity android:name=".lesson38.L38Activity" />
         <activity android:name=".lesson40.L40Activity" />
