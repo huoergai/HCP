@@ -6,7 +6,7 @@ apply plugin: 'kotlin-android-extensions'
 
 android {
     compileSdkVersion 29
-    buildToolsVersion '29.0.2'
+    buildToolsVersion '29.0.3'
     defaultConfig {
         applicationId "com.huoergai.hcp"
         minSdkVersion 21
@@ -16,38 +16,82 @@ android {
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
     }
     buildTypes {
+        debug {
+
+        }
+        internal {
+            initWith debug
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
+
+    flavorDimensions 'price', 'nation'
+    productFlavors {
+        free {
+            dimension 'price'
+        }
+
+        paid {
+            dimension 'price'
+        }
+
+        cn {
+            dimension 'nation'
+        }
+        international {
+            dimension 'nation'
+        }
+    }
+
     compileOptions {
         sourceCompatibility JavaVersion.VERSION_1_8
         targetCompatibility JavaVersion.VERSION_1_8
     }
+
 }
 
+/**
+ * compile 有传递依赖，已废弃：A --> B ,B --> C,==> A --> C
+ * implementation 没有传递依赖
+ * api 有传递依赖
+ */
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    testImplementation 'junit:junit:4.12'
+    testImplementation 'junit:junit:4.13'
     androidTestImplementation 'androidx.test:runner:1.2.0'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
     implementation 'androidx.appcompat:appcompat:1.1.0'
-    implementation 'com.google.android.material:material:1.0.0'
+    implementation 'com.google.android.material:material:1.1.0'
     implementation 'androidx.recyclerview:recyclerview:1.2.0-alpha01'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    implementation 'androidx.core:core-ktx:1.1.0'
+    implementation 'androidx.core:core-ktx:1.2.0'
     implementation "org.jetbrains.kotlin:kotlin-stdlib-jdk8:$kotlin_version"
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-core:1.3.1'
     implementation 'org.jetbrains.kotlinx:kotlinx-coroutines-android:1.3.1'
-    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     def paging_version = "2.1.1"
     implementation "androidx.paging:paging-runtime:$paging_version"
     testImplementation "androidx.paging:paging-common:$paging_version"
     implementation "androidx.paging:paging-rxjava2:$paging_version"
     implementation 'androidx.palette:palette:1.0.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.6.2'
+    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     implementation 'com.jakewharton.timber:timber:4.7.1'
-    implementation("com.squareup.okhttp3:okhttp:4.2.2")
-    implementation 'com.squareup.okio:okio:2.4.2'
+    implementation('com.squareup.okhttp3:okhttp:4.4.0')
+}
+
+// create hotfix diff dex task
+def patchPath = 'com/huoergai/hcp/l38hotfix/StrUtil'
+task hotfix {
+    /*doLast {
+        exec { commandLine 'rm', '-r', '/app/build/patch' }
+        exec { commandLine 'mkdir', '/app/build/patch' }
+        exec { commandLine 'javac', "/app/src/main/java/${patchPath}.java", '-d', '/app/build/patch' }
+        exec {
+            commandLine 'D:/Installed/Android/Android_beta/Sdk/build-tools/29.0.2/d8', "/app/build/patch/${patchPath}.class", '--output', '/app/build/patch'
+        }
+        exec { commandLine 'mv', "/app/build/patch/classes.dex", '/app/build/patch/hotfix.dex' }
+    }*/
 }

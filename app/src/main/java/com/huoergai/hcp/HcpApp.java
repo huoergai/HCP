@@ -38,7 +38,7 @@ public class HcpApp extends Application {
         }*/
 
         if (hotfixDex.exists()) {
-            // 方式2 增量加载更新
+            // 方式2 差量加载更新
             partiallyUpdate();
         }
     }

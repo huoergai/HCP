@@ -1,0 +1,24 @@
+apply plugin: 'java-library'
+
+repositories {
+    google()
+    jcenter()
+}
+dependencies {
+    implementation 'com.android.tools.build:gradle:3.6.1'
+}
+
+dependencies {
+    implementation fileTree(dir: 'libs', include: ['*.jar'])
+}
+
+
+sourceCompatibility = "7"
+targetCompatibility = "7"
+// The name “buildSrc” is now reserved for the conventional buildSrc project that builds extra build logic.
+// Typical use of buildSrc is unaffected by this change.
+// You will only be affected if your settings file specifies include("buildSrc") or includeBuild("buildSrc").
+println("This is buildSrc module.")
+
+// Java 字节码编辑工具库：Javassist ASM, gradle 插件应用示例：consuming-collector, 利用插件打包时修改字节码文件，
+// 添加类似方法执行耗时统计,以方便做性能优化时查找可优化点。

@@ -1,3 +1,6 @@
-include ':37pluginable'
+include ':29gradle'
 rootProject.name='HCP'
+include ':37pluginable'
 include ':app'
+include ':30gradle_plugin'
+//include ':buildSrc'
