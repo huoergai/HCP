@@ -5,8 +5,8 @@ import java.net.ServerSocket
 import java.text.SimpleDateFormat
 import java.util.*
 
-private const val FILE_NAME = "./app/test.txt"
-private const val FILE_NAME_COPY = "./app/test_copy.txt"
+private const val FILE_NAME = "test.txt"
+private const val FILE_NAME_COPY = "test_copy.txt"
 
 fun main() {
     // io1()

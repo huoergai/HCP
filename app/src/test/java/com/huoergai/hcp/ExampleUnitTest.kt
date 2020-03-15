@@ -1,8 +1,7 @@
 package com.huoergai.hcp
 
+import com.huoergai.hcp.l28io.IoTest
 import org.junit.Test
-
-import org.junit.Assert.assertEquals
 
 /**
  * Example local unit test, which will execute on the development machine (host).
@@ -11,13 +10,15 @@ import org.junit.Assert.assertEquals
  */
 class ExampleUnitTest {
     @Test
-    @Throws(Exception::class)
-    fun addition_isCorrect() {
-        assertEquals(4, (2 + 2).toLong())
+    fun l28_IO_Test() {
+        // IoTest.basicIO()
+        // IoTest.basicIoCopyFile()
+        // IoTest.bufferIoCopy()
+        // IoTest.sockIo()
+        // IoTest.nio1()
+        IoTest.nio2()
 
-        for (i in 0 until 10) {
-            println(i)
-        }
-
+        // IoTest.okio1()
+        // io1()
     }
 }

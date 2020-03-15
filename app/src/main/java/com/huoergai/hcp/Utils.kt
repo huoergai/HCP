@@ -3,11 +3,19 @@ package com.huoergai.hcp
 import android.content.res.Resources
 import android.graphics.Bitmap
 import android.graphics.BitmapFactory
-import android.util.Log
 import android.util.TypedValue
+import timber.log.Timber
+
 
 class Utils {
     companion object {
+
+        @JvmStatic
+        fun prt(msg: String) {
+            println(msg)
+        }
+
+        @JvmStatic
         fun dp2px(dp: Float): Float {
             return TypedValue.applyDimension(
                 TypedValue.COMPLEX_UNIT_DIP,
@@ -16,10 +24,12 @@ class Utils {
             )
         }
 
+        @JvmStatic
         fun getZForCamera(): Float {
             return -8 * Resources.getSystem().displayMetrics.density
         }
 
+        @JvmStatic
         fun getAvatar(res: Resources, drawableRes: Int, width: Int): Bitmap {
             val options = BitmapFactory.Options()
             options.inJustDecodeBounds = true
@@ -28,17 +38,18 @@ class Utils {
             options.inTargetDensity = width
             options.inJustDecodeBounds = false
             val bitmap = BitmapFactory.decodeResource(res, drawableRes, options)
-            Log.d("Utils", "is bitmap null:" + (bitmap == null))
+            Timber.d("Utils is bitmap null:%s", (bitmap == null))
             return bitmap
         }
 
+        @JvmStatic
         fun scaleImage(resources: Resources, reqWidth: Float, reqHeight: Float): Bitmap {
             // get image information
             val options = BitmapFactory.Options().apply { inJustDecodeBounds = true }
             BitmapFactory.decodeResource(resources, R.drawable.shaw, options)
-            Log.d("AvatarView", "img type: " + options.outMimeType)
-            Log.d("AvatarView", "img w: " + options.outWidth)
-            Log.d("AvatarView", "img h: " + options.outHeight)
+            Timber.d("img type: %s", options.outMimeType)
+            Timber.d("img w: %s", options.outWidth)
+            Timber.d("img h: %s", options.outHeight)
 
             // scale image to the given dimension but keep its original aspect-ratio
             val ow = options.outWidth
@@ -56,9 +67,9 @@ class Utils {
             options.inSampleSize = sampleSize
             options.inJustDecodeBounds = false
             val scaledBitmap = BitmapFactory.decodeResource(resources, R.drawable.kitty, options)
-            Log.d("AvatarView", "img type: " + options.outMimeType)
-            Log.d("AvatarView", "img w: " + options.outWidth)
-            Log.d("AvatarView", "img h: " + options.outHeight)
+            Timber.d("AvatarView img type: %s", options.outMimeType)
+            Timber.d("AvatarView img w: %s", options.outWidth)
+            Timber.d("AvatarView img h: %s", options.outHeight)
             return scaledBitmap
         }
     }

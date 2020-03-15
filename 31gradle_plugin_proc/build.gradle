@@ -3,12 +3,13 @@ apply plugin: 'com.android.application'
 android {
     compileSdkVersion 29
     defaultConfig {
-        applicationId "com.example.a37pluginable"
-        minSdkVersion 21
+        applicationId "com.huoergai.gradle_plugin_proc"
+        minSdkVersion 19
         targetSdkVersion 29
         versionCode 1
         versionName "1.0"
         testInstrumentationRunner "androidx.test.runner.AndroidJUnitRunner"
+        buildConfigField("String", "base_url", '"http://example.com/api/"')
     }
 
     buildTypes {
@@ -17,18 +18,39 @@ android {
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
         }
     }
-    compileOptions {
-        sourceCompatibility JavaVersion.VERSION_1_8
-        targetCompatibility JavaVersion.VERSION_1_8
+
+    flavorDimensions 'vendor', 'scope'
+    productFlavors {
+        xiaomi {
+            dimension 'vendor'
+        }
+        huawei {
+            dimension 'vendor'
+        }
+
+        cn {
+            dimension 'scope'
+        }
+        international {
+            dimension 'scope'
+        }
     }
 
 }
 
+gradle.taskGraph.whenReady {
+    it.allTasks.each {
+        println("name = ${it.name} || class = ${it.class.name}")
+    }
+}
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
+
     implementation 'androidx.appcompat:appcompat:1.1.0'
     implementation 'androidx.constraintlayout:constraintlayout:1.1.3'
-    testImplementation 'junit:junit:4.13'
+    testImplementation 'junit:junit:4.12'
     androidTestImplementation 'androidx.test.ext:junit:1.1.1'
     androidTestImplementation 'androidx.test.espresso:espresso-core:3.2.0'
+    // implementation 'com.android.tools.build:gradle:3.2.1'
 }
