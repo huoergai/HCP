@@ -4,7 +4,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <com.huoergai.hcp.lesson21.drag.DragListenerGridView
+    <com.huoergai.hcp.l21drag_nestedscroll.drag.DragListenerGridView
         android:id="@+id/drag_listener"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -41,9 +41,9 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#1E88E5" />
-    </com.huoergai.hcp.lesson21.drag.DragListenerGridView>
+    </com.huoergai.hcp.l21drag_nestedscroll.drag.DragListenerGridView>
 
-    <com.huoergai.hcp.lesson21.drag.DragHelperGridView
+    <com.huoergai.hcp.l21drag_nestedscroll.drag.DragHelperGridView
         android:id="@+id/drag_Helper"
         android:layout_width="match_parent"
         android:layout_height="0dp"
@@ -80,5 +80,5 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:background="#546E7A" />
-    </com.huoergai.hcp.lesson21.drag.DragHelperGridView>
+    </com.huoergai.hcp.l21drag_nestedscroll.drag.DragHelperGridView>
 </androidx.constraintlayout.widget.ConstraintLayout>

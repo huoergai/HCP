@@ -16,6 +16,7 @@ import com.huoergai.hcp.lesson36.L36Activity
 import com.huoergai.hcp.lesson37.L37Activity
 import com.huoergai.hcp.lesson38.L38Activity
 import com.huoergai.hcp.lesson40.L40Activity
+import com.huoergai.hcp.l29gradle.L29Activity
 
 class MainActivity : AppCompatActivity() {
 

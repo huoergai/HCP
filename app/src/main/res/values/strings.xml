@@ -14,4 +14,6 @@
     <string name="mvvm">mvvm</string>
     <string name="auto_save_message">auto save message</string>
     <string name="update">update</string>
+    <string name="sure">sure</string>
+    <string name="load_plugin">load plugin</string>
 </resources>
