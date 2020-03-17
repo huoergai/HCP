@@ -79,6 +79,8 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.7.1'
     implementation 'com.jakewharton.timber:timber:4.7.1'
     implementation('com.squareup.okhttp3:okhttp:4.4.0')
+    annotationProcessor project(path: ':40_lib_processor')
+    implementation project(path: ':40_lib')
 }
 
 // create hotfix diff dex task

@@ -23,9 +23,9 @@ public class L36Activity extends AppCompatActivity implements View.OnClickListen
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_l36);
 
-        Button btnMvc = findViewById(R.id.l36_btn_mvc);
-        Button btnMvp = findViewById(R.id.l36_btn_mvp);
-        Button btnMvvm = findViewById(R.id.l36_btn_mvvm);
+        Button btnMvc = findViewById(R.id.btn_mvc);
+        Button btnMvp = findViewById(R.id.btn_mvp);
+        Button btnMvvm = findViewById(R.id.btn_mvvm);
 
         btnMvc.setOnClickListener(this);
         btnMvp.setOnClickListener(this);
@@ -35,13 +35,13 @@ public class L36Activity extends AppCompatActivity implements View.OnClickListen
     @Override
     public void onClick(View v) {
         switch (v.getId()) {
-            case R.id.l36_btn_mvc:
+            case R.id.btn_mvc:
                 startActivity(new Intent(this, MvcActivity.class));
                 break;
-            case R.id.l36_btn_mvp:
+            case R.id.btn_mvp:
                 startActivity(new Intent(this, MvpActivity.class));
                 break;
-            case R.id.l36_btn_mvvm:
+            case R.id.btn_mvvm:
                 startActivity(new Intent(this, MvvmActivity.class));
                 break;
         }

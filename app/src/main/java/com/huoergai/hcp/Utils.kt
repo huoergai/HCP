@@ -72,5 +72,10 @@ class Utils {
             Timber.d("AvatarView img h: %s", options.outHeight)
             return scaledBitmap
         }
+
+        @JvmStatic
+        fun randomString(len: Int): String {
+            return "hello"
+        }
     }
 }
