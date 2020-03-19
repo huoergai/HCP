@@ -2,13 +2,13 @@ package com.huoergai.blockcanary;
 
 import android.os.Bundle;
 import android.os.Debug;
+import android.os.Handler;
 import android.os.Looper;
 import android.os.SystemClock;
 import android.util.Log;
 import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.core.os.TraceCompat;
 
 import com.github.moduth.blockcanary.internal.BlockInfo;
 
@@ -16,17 +16,21 @@ import hugo.weaving.DebugLog;
 
 public class MainActivity extends AppCompatActivity {
 
+    private Handler mh = new Handler(Looper.getMainLooper());
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
-        TraceCompat.beginSection("customTTrace");
+        // TraceCompat.beginSection("customTTrace");
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
 
         // traceViewCatch();
 
         // systrace 在关键节点打点,几乎不影响性能
-        catchTrace();
-        TraceCompat.endSection();
+        // catchTrace();
+
+        // TraceCompat.endSection();
     }
 
     private void traceViewCatch() {
