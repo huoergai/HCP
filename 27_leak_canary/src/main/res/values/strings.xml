@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">27_leak_canary</string>
+    <string name="static_variable">static</string>
+    <string name="stack">stack</string>
+    <string name="thread">thread</string>
+    <string name="application">application</string>
+    <string name="dump">dump</string>
+</resources>
