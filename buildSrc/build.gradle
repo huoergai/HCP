@@ -15,8 +15,8 @@ dependencies {
 }
 
 
-sourceCompatibility = "7"
-targetCompatibility = "7"
+sourceCompatibility = "8"
+targetCompatibility = "8"
 // The name “buildSrc” is now reserved for the conventional buildSrc project that builds extra build logic.
 // Typical use of buildSrc is unaffected by this change.
 // You will only be affected if your settings file specifies include("buildSrc") or includeBuild("buildSrc").

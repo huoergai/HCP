@@ -11,4 +11,5 @@ include ':40_lib_processor'
 include ':40_lib_annotation'
 include ':40_lib'
 include ':40_lib_reflect'
-
+include ':27_leak_canary'
+include ':26_rxjava2'
