@@ -1,15 +1,16 @@
 apply plugin: 'com.android.application'
 
 // 在 Android Studio 中, 以 buildSrc 命名的 library module 会被默认为是插件项目，并领先于其它项目执行.
-apply plugin: 'Custom_Plugin'
+// apply plugin: 'Custom_Plugin'
 
-custom_plugin {
+/*custom_plugin {
     name "Al Capoon"
     age 21
-}
+}*/
 
 android {
     compileSdkVersion 29
+    buildToolsVersion "29.0.3"
     defaultConfig {
         applicationId "com.huoergai.gradle_plugin"
         minSdkVersion 19

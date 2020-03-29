@@ -3,6 +3,9 @@ package com.huoergai.hcp.l24multi_thread_sync
 import java.util.concurrent.*
 import java.util.concurrent.atomic.AtomicInteger
 
+/**
+ * 多线程、线程同步原理
+ */
 fun main() {
     // threadTest()
     // runnableTest()
@@ -12,7 +15,8 @@ fun main() {
 
     // SyncDemo1().runTest()
     // SyncDemo2().runTest()
-    SyncDemo3().runTest()
+    // SyncDemo3().runTest()
+    MultiDemo().runTest()
 }
 
 fun threadTest() {
@@ -45,8 +49,6 @@ fun threadFactoryTest() {
     val t2 = tf.newThread(r)
     t1.start()
     t2.start()
-
-
 }
 
 fun executorTest() {

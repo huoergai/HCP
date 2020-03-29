@@ -25,6 +25,15 @@ class Utils {
         }
 
         @JvmStatic
+        fun px2dp(px: Float): Float {
+            return TypedValue.applyDimension(
+                TypedValue.COMPLEX_UNIT_PX,
+                px,
+                Resources.getSystem().displayMetrics
+            )
+        }
+
+        @JvmStatic
         fun getZForCamera(): Float {
             return -8 * Resources.getSystem().displayMetrics.density
         }

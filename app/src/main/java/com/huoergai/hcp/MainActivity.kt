@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.DividerItemDecoration
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.huoergai.hcp.base.CubeActivity
 import com.huoergai.hcp.base.RvAdapter
 import com.huoergai.hcp.l10text_transfermation.L10Activity
 import com.huoergai.hcp.l11animation.L11Activity
@@ -27,6 +28,7 @@ class MainActivity : AppCompatActivity() {
         rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rv.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
         val datas = listOf(
+            CubeActivity::class.java,
             L10Activity::class.java,
             L11Activity::class.java,
             L12Activity::class.java,

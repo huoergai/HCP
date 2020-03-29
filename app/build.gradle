@@ -18,9 +18,9 @@ android {
         debug {
 
         }
-        internal {
+        /*internal {
             initWith debug
-        }
+        }*/
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android-optimize.txt'), 'proguard-rules.pro'
@@ -75,9 +75,9 @@ dependencies {
     testImplementation "androidx.paging:paging-common:$paging_version"
     implementation "androidx.paging:paging-rxjava2:$paging_version"
     implementation 'androidx.palette:palette:1.0.0'
-    implementation 'com.squareup.retrofit2:retrofit:2.7.1'
+    implementation 'com.squareup.retrofit2:retrofit:2.8.1'
     implementation 'com.jakewharton.timber:timber:4.7.1'
-    implementation('com.squareup.okhttp3:okhttp:4.4.0')
+    implementation('com.squareup.okhttp3:okhttp:4.4.1')
     annotationProcessor project(path: ':40_lib_processor')
     implementation project(path: ':40_lib')
 }

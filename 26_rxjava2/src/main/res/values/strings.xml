@@ -2,4 +2,7 @@
     <string name="app_name">26_rxjava2</string>
     <string name="loading">loading...</string>
     <string name="fetch">fetch</string>
+    <string name="start">start</string>
+    <string name="error">error</string>
+    <string name="complete">complete</string>
 </resources>
