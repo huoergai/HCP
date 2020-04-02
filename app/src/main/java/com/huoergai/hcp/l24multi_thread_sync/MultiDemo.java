@@ -1,10 +1,10 @@
 package com.huoergai.hcp.l24multi_thread_sync;
 
 public class MultiDemo implements ITest {
-    private int num = 0;
+    private volatile int num = 0;
 
-    // private synchronized void updateNum(String threadName) {
-    private void updateNum(String threadName) {
+    private synchronized void updateNum(String threadName) {
+        //private void updateNum(String threadName) {
         num++;
         System.out.println(threadName + " num=" + num);
     }
