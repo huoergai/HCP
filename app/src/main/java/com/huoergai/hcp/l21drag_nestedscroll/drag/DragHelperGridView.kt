@@ -11,14 +11,12 @@ import androidx.core.view.ViewCompat
 import androidx.customview.widget.ViewDragHelper
 
 class DragHelperGridView(context: Context, attr: AttributeSet) : ViewGroup(context, attr) {
-    private var ROW = 3
-    private var COLUMN = 2
+    private var rows = 3
+    private var columns = 2
     private var childW = 0
     private var childH = 0
 
-    companion object {
-        private lateinit var dragHelper: ViewDragHelper
-    }
+    private lateinit var dragHelper: ViewDragHelper
 
     init {
         dragHelper = ViewDragHelper.create(this, MyDragHelper(this))
@@ -27,11 +25,11 @@ class DragHelperGridView(context: Context, attr: AttributeSet) : ViewGroup(conte
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            ROW = 3
-            COLUMN = 2
+            rows = 3
+            columns = 2
         } else {
-            ROW = 2
-            COLUMN = 3
+            rows = 2
+            columns = 3
         }
     }
 
@@ -39,8 +37,8 @@ class DragHelperGridView(context: Context, attr: AttributeSet) : ViewGroup(conte
         val width = MeasureSpec.getSize(widthMeasureSpec)
         val height = MeasureSpec.getSize(heightMeasureSpec)
 
-        childW = width / COLUMN
-        childH = height / ROW
+        childW = width / columns
+        childH = height / rows
 
         /*
         for (i in 0..childCount) {
@@ -87,9 +85,10 @@ class DragHelperGridView(context: Context, attr: AttributeSet) : ViewGroup(conte
         }
     }
 
-    private class MyDragHelper(val view: View) : ViewDragHelper.Callback() {
-        var capturedLeft: Int = 0
-        var capturedTop: Int = 0
+    inner class MyDragHelper(val view: View) : ViewDragHelper.Callback() {
+        private var capturedLeft: Int = 0
+        private var capturedTop: Int = 0
+
         override fun tryCaptureView(child: View, pointerId: Int): Boolean {
             return true
         }
@@ -104,13 +103,12 @@ class DragHelperGridView(context: Context, attr: AttributeSet) : ViewGroup(conte
 
         override fun onViewDragStateChanged(state: Int) {
             if (state == ViewDragHelper.STATE_IDLE) {
-                val capturedView = dragHelper.capturedView
-                capturedView?.let { capturedView.elevation = capturedView.elevation - 1 }
+                dragHelper.capturedView?.let { it.elevation-- }
             }
         }
 
         override fun onViewCaptured(capturedChild: View, activePointerId: Int) {
-            capturedChild.elevation = capturedChild.elevation + 1
+            capturedChild.elevation = elevation + 1
             capturedLeft = capturedChild.left
             capturedTop = capturedChild.top
         }

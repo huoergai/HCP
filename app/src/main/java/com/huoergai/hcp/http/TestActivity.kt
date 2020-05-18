@@ -18,5 +18,4 @@ class TestActivity : AppCompatActivity() {
 
     }
 
-
 }

@@ -9,15 +9,16 @@ import android.view.View
 import android.view.ViewConfiguration
 import android.view.ViewGroup
 
+/**
+ *
+ */
 class DragListenerGridView(context: Context, attr: AttributeSet) : ViewGroup(context, attr) {
-    private var ROW = 3
-    private var COLUMN = 2
-    private var childW = 0
-    private var childH = 0
+    private var rows = 3
+    private var colums = 2
     private var configuration: ViewConfiguration = ViewConfiguration.get(context)
 
     private lateinit var draggedView: View
-    private val orderdChildren = ArrayList<View>()
+    private val orderedChildren = mutableListOf<View>()
     private val dragListener = MyDragListener()
 
     init {
@@ -27,36 +28,40 @@ class DragListenerGridView(context: Context, attr: AttributeSet) : ViewGroup(con
     override fun onConfigurationChanged(newConfig: Configuration) {
         super.onConfigurationChanged(newConfig)
         if (newConfig.orientation == Configuration.ORIENTATION_LANDSCAPE) {
-            ROW = 3
-            COLUMN = 2
+            rows = 3
+            colums = 2
         } else {
-            ROW = 2
-            COLUMN = 3
+            rows = 2
+            colums = 3
         }
     }
 
     override fun onMeasure(widthMeasureSpec: Int, heightMeasureSpec: Int) {
-        val width = MeasureSpec.getSize(widthMeasureSpec)
-        val height = MeasureSpec.getSize(heightMeasureSpec)
+        val specWidth = MeasureSpec.getSize(widthMeasureSpec)
+        val specHeight = MeasureSpec.getSize(heightMeasureSpec)
 
-        childW = width / COLUMN
-        childH = height / ROW
+        val childW = specWidth / colums
+        val childH = specHeight / rows
         measureChildren(
             MeasureSpec.makeMeasureSpec(childW, MeasureSpec.EXACTLY),
             MeasureSpec.makeMeasureSpec(childH, MeasureSpec.EXACTLY)
         )
-        setMeasuredDimension(width, height)
+        setMeasuredDimension(specWidth, specHeight)
     }
 
     override fun onLayout(changed: Boolean, l: Int, t: Int, r: Int, b: Int) {
         var left: Int
         var top: Int
+        val childW = width / colums
+        val childH = height / rows
         for (i in 0 until childCount) {
             left = i % 2 * childW
             top = i / 2 * childH
-            getChildAt(i).layout(left, top, left + childW, top + childH)
+            val child = getChildAt(i)
+            child.layout(0, 0, childW, childH)
+            child.translationX = left.toFloat()
+            child.translationY = top.toFloat()
         }
-
     }
 
     override fun onFinishInflate() {
@@ -72,12 +77,12 @@ class DragListenerGridView(context: Context, attr: AttributeSet) : ViewGroup(con
                 draggedView = v
                 false
             }
-            orderdChildren.add(child)
+            orderedChildren.add(child)
             child.setOnDragListener(dragListener)
         }
     }
 
-    private class MyDragListener : OnDragListener {
+    inner class MyDragListener : OnDragListener {
         override fun onDrag(v: View, event: DragEvent): Boolean {
             when (event.action) {
                 DragEvent.ACTION_DRAG_STARTED -> {
@@ -97,14 +102,35 @@ class DragListenerGridView(context: Context, attr: AttributeSet) : ViewGroup(con
                     }
                 }
             }
-
             return true
         }
 
-        private fun doSort(v: View) {
+        private fun doSort(targetView: View) {
+            var draggedIndex = -1
+            var targetIndex = -1
+            for (i in 0 until childCount) {
+                val child = orderedChildren[i]
+                if (targetView == child) {
+                    targetIndex = i
+                } else if (draggedView == child) {
+                    draggedIndex = i
+                }
+            }
 
+            orderedChildren.removeAt(draggedIndex)
+            orderedChildren.add(targetIndex, draggedView)
 
+            var childLeft: Float
+            var childTop: Float
+            val childWidth = width / colums
+            val childHeight = height / rows
+            for (i in 0 until childCount) {
+                childLeft = (i % 2 * childWidth).toFloat()
+                childTop = (i / 2 * childHeight).toFloat()
+                orderedChildren[i].animate()
+                    .translationX(childLeft)
+                    .translationY(childTop).duration = 150
+            }
         }
-
     }
 }

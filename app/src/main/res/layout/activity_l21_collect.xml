@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<com.huoergai.hcp.l21drag_nestedscroll.drag.DragToCollectLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:padding="8dp">
+
+        <ImageView
+            android:id="@+id/iv_cat"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/cat"
+            android:padding="8dp"
+            android:src="@drawable/kitty" />
+
+        <ImageView
+            android:id="@+id/iv_robot"
+            android:layout_width="0dp"
+            android:layout_height="120dp"
+            android:layout_weight="1"
+            android:contentDescription="@string/robot"
+            android:padding="8dp"
+            android:src="@mipmap/ic_launcher" />
+    </LinearLayout>
+
+    <LinearLayout
+        android:id="@+id/ll_collector"
+        android:layout_width="match_parent"
+        android:layout_height="80dp"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorPrimary"
+        android:orientation="horizontal" />
+</com.huoergai.hcp.l21drag_nestedscroll.drag.DragToCollectLayout>

@@ -17,6 +17,7 @@ import com.huoergai.hcp.lesson36.L36Activity
 import com.huoergai.hcp.lesson37.L37Activity
 import com.huoergai.hcp.lesson38.L38Activity
 import com.huoergai.hcp.lesson40.L40Activity
+import kotlinx.coroutines.*
 
 class MainActivity : AppCompatActivity() {
 
@@ -24,6 +25,11 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
+        initView()
+        // coroutineTest()
+    }
+
+    private fun initView() {
         val rv: RecyclerView = findViewById(R.id.main_rv)
         rv.layoutManager = LinearLayoutManager(this, RecyclerView.VERTICAL, false)
         rv.addItemDecoration(DividerItemDecoration(this, RecyclerView.VERTICAL))
@@ -41,7 +47,37 @@ class MainActivity : AppCompatActivity() {
             L40Activity::class.java
         )
         rv.adapter = RvAdapter(datas)
+    }
+
+    private fun coroutineTest() {
+        GlobalScope.launch(Dispatchers.Main) {
+            ioFun1()
+            uiFun1()
+            ioFun2()
+            uiFun2()
+        }
 
     }
 
+    private suspend fun ioFun1() {
+        withContext(Dispatchers.IO) {
+            delay(200)
+            println("ioFun1:${Thread.currentThread().name} ")
+        }
+    }
+
+    private fun uiFun1() {
+        println("uiFun1:${Thread.currentThread().name} ")
+    }
+
+    private suspend fun ioFun2() {
+        withContext(Dispatchers.IO) {
+            delay(200)
+            println("ioFun2:${Thread.currentThread().name} ")
+        }
+    }
+
+    private fun uiFun2() {
+        println("uiFun2:${Thread.currentThread().name} ")
+    }
 }

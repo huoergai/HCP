@@ -18,8 +18,6 @@ class NestedScrollActivity : AppCompatActivity() {
 
         loadData()
         initView()
-
-
     }
 
     private fun initView() {
