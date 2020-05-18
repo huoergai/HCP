@@ -10,6 +10,7 @@ import android.util.AttributeSet
 import android.util.Log
 import android.view.GestureDetector
 import android.view.MotionEvent
+import android.view.ScaleGestureDetector
 import android.view.View
 import android.view.animation.LinearInterpolator
 import android.widget.OverScroller
@@ -33,8 +34,12 @@ class ScaleImageView : View {
     private var deltaOffsetX: Float = 0f
     private var deltaOffsetY: Float = 0f
 
-    // current scale
-    private var curScale = 1f
+    private var curScale = 0f
+        set(value) {
+            field = value
+            invalidate()
+        }
+
     private var bigScale = 1f
     private var smallScale = 1f
     private val overScaleFactor = 1.5f
@@ -42,38 +47,59 @@ class ScaleImageView : View {
 
     // private val detector = GestureDetectorCompat(context, GestureDetector.SimpleOnGestureListener())
     private var gestureDetector: GestureDetectorCompat
-    private var gestureListener: ImgGestureListener
+
+    // private var gestureListener: ImgGestureListener
+
     private var animRunner: AnimRunnable
 
     // temporary scale during transmission
-    private var scaleFraction: Float = 0f
-        set(value) {
-            field = value
-            invalidate()
-        }
+    // private var scaleFraction: Float = 0f
+    //     set(value) {
+    //         field = value
+    //         invalidate()
+    //     }
 
     private var scaleAnimator: ObjectAnimator
+        get() {
+            field.setFloatValues(smallScale, bigScale)
+            return field
+        }
 
     // scroller to handle inertial scrolling
     private var scroller: OverScroller
+
+    private var scaleGestureDetector: ScaleGestureDetector
 
     /**
      * init blocks after invoking constructor
      */
     init {
-        gestureListener = ImgGestureListener()
-        gestureDetector = GestureDetectorCompat(context, gestureListener)
+        // gestureListener = ImgGestureListener()
+        gestureDetector = GestureDetectorCompat(context, ImgGestureListener())
         // gestureDetector.setOnDoubleTapListener(this)
-        scaleAnimator = ObjectAnimator.ofFloat(this, "scaleFraction", 0f, 1f)
+        // scaleAnimator = ObjectAnimator.ofFloat(this, "scaleFraction", 0f, 1f)
+        scaleAnimator = ObjectAnimator.ofFloat(this, "curScale", 0f, 1f)
         scroller = OverScroller(context, LinearInterpolator())
         animRunner = AnimRunnable()
+
+        scaleGestureDetector = ScaleGestureDetector(context, ImgScaleGestureListener())
     }
 
 
     @SuppressLint("ClickableViewAccessibility")
     override fun onTouchEvent(event: MotionEvent?): Boolean {
         // return super.onTouchEvent(event)
-        return gestureDetector.onTouchEvent(event)
+        // val gesture = gestureDetector.onTouchEvent(event)
+        // return if (gesture) {
+        //     scaleGestureDetector.onTouchEvent(event)
+        // } else {
+        //     super.onTouchEvent(event)
+        // }
+        var ret = scaleGestureDetector.onTouchEvent(event)
+        if (!scaleGestureDetector.isInProgress) {
+            ret = gestureDetector.onTouchEvent(event)
+        }
+        return ret
     }
 
     override fun onSizeChanged(w: Int, h: Int, oldw: Int, oldh: Int) {
@@ -90,7 +116,8 @@ class ScaleImageView : View {
             bigScale = hs * overScaleFactor
             smallScale = ws
         }
-        // scale = smallScale
+        // curScale = smallScale + (bigScale - smallScale) * scaleFraction
+        curScale = smallScale
 
         deltaOffsetX = (bitmap.width * bigScale - width) / 2f
         deltaOffsetY = (bitmap.height * bigScale - height) / 2f
@@ -113,9 +140,9 @@ class ScaleImageView : View {
         //  offsetX *= scaleFraction
         //  offsetY *= scaleFraction
         // canvas.translate(offsetX, offsetY)
-        canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction)
 
-        curScale = smallScale + (bigScale - smallScale) * scaleFraction
+        val scaleFraction: Float = (curScale - smallScale) / (bigScale - smallScale)
+        canvas.translate(offsetX * scaleFraction, offsetY * scaleFraction)
         // Log.d("ScaleImageView", "scale=$scale, scaleBig=$bigScale, scaleSmall=$smallScale")
         canvas.scale(curScale, curScale, width / 2f, height / 2f)
         canvas.drawBitmap(bitmap, originalOffsetX, originalOffsetY, paint)
@@ -179,7 +206,7 @@ class ScaleImageView : View {
             // onMove
 
             // scrollable only when it on scale large condition
-            if (scaleBigFlag) {
+            if (scaleBigFlag || (curScale > smallScale)) {
                 offsetX -= distanceX
                 offsetY -= distanceY
 
@@ -201,7 +228,7 @@ class ScaleImageView : View {
             e1: MotionEvent?, e2: MotionEvent?, velocityX: Float, velocityY: Float
         ): Boolean {
             // 惯性滑动
-            if (scaleBigFlag) {
+            if (scaleBigFlag || (curScale > smallScale)) {
                 scroller.fling(
                     offsetX.toInt(),
                     offsetY.toInt(),
@@ -228,5 +255,34 @@ class ScaleImageView : View {
                 ViewCompat.postOnAnimation(this@ScaleImageView, this)
             }
         }
+    }
+
+    inner class ImgScaleGestureListener : ScaleGestureDetector.OnScaleGestureListener {
+        private var initScale: Float = 0f
+        override fun onScaleBegin(detector: ScaleGestureDetector?): Boolean {
+            initScale = curScale
+            return true
+        }
+
+        override fun onScale(detector: ScaleGestureDetector?): Boolean {
+            detector?.let {
+                curScale = initScale * it.scaleFactor
+                fixScale()
+            }
+            return false
+        }
+
+        override fun onScaleEnd(detector: ScaleGestureDetector?) {
+
+        }
+
+        private fun fixScale() {
+            curScale = max(curScale, smallScale)
+            curScale = min(curScale, bigScale)
+            if (curScale > smallScale) {
+                scaleBigFlag = false
+            }
+        }
+
     }
 }
