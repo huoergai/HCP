@@ -1,0 +1,4 @@
+<resources>
+    <string name="app_name">16_custom_size_layout</string>
+    <string name="test">this is a test message</string>
+</resources>
