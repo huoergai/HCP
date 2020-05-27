@@ -6,32 +6,53 @@
         app:constraintSetEnd="@id/end"
         app:constraintSetStart="@id/start"
         app:duration="1000">
-        <OnClick
-            app:clickAction="toggle"
-            app:targetId="@id/iv_video" />
+
+        <OnSwipe
+            app:dragDirection="dragDown"
+            app:touchAnchorId="@id/iv_img" />
 
         <KeyFrameSet>
+
             <KeyPosition
                 app:curveFit="linear"
-                app:framePosition="80"
-                app:keyPositionType="deltaRelative"
-                app:motionTarget="@id/iv_video"
+                app:framePosition="90"
+                app:motionTarget="@id/img_container"
                 app:percentWidth="0"
-                app:percentX="0.0"
-                app:percentY="0.8" />
+                app:percentX="0" />
+
+            <KeyPosition
+                app:curveFit="linear"
+                app:framePosition="90"
+                app:motionTarget="@id/iv_img"
+                app:percentWidth="0"
+                app:percentX="0" />
+
+            <KeyPosition
+                app:curveFit="linear"
+                app:framePosition="90"
+                app:motionTarget="@id/text_bg"
+                app:percentWidth="0" />
+
+            <KeyPosition
+                app:curveFit="linear"
+                app:framePosition="75"
+                app:motionTarget="@id/text_container"
+                app:percentWidth="0" />
 
             <KeyAttribute
-                android:alpha="0"
-                app:framePosition="80"
-                app:keyPositionType="deltaRelative"
+                android:alpha="0.1"
+                app:framePosition="90"
                 app:motionTarget="@id/btn_play" />
 
             <KeyAttribute
-                android:alpha="0"
-                app:framePosition="80"
-                app:keyPositionType="deltaRelative"
-                app:motionTarget="@id/btn_del" />
+                android:alpha="0.1"
+                app:framePosition="90"
+                app:motionTarget="@id/btn_clear" />
 
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="75"
+                app:motionTarget="@id/text_container" />
 
         </KeyFrameSet>
 
@@ -39,85 +60,138 @@
 
     <ConstraintSet android:id="@+id/start">
         <Constraint
-            android:id="@+id/btn_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:alpha="0"
-            android:src="@drawable/ic_play_arrow_gray_32dp"
-            android:tint="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_del"
-            app:layout_constraintTop_toTopOf="@id/iv_video">
+            android:id="@id/img_container"
+            android:layout_width="match_parent"
+            android:layout_height="320dp"
+            android:background="?android:attr/windowBackground"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toTopOf="parent" />
+
+        <Constraint
+            android:id="@id/iv_img"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:contentDescription="@string/imv_cm"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cm03"
+            app:layout_constraintBottom_toBottomOf="@id/img_container"
+            app:layout_constraintEnd_toEndOf="@id/img_container"
+            app:layout_constraintStart_toStartOf="@id/img_container"
+            app:layout_constraintTop_toTopOf="@id/img_container" />
+
+        <Constraint
+            android:id="@id/btn_play"
+            android:visibility="invisible" />
+
+        <Constraint
+            android:id="@id/btn_clear"
+            android:visibility="invisible" />
+
+        <Constraint
+            android:id="@id/text_bg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:background="?android:attr/windowBackground"
+            app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_container" />
+
+        <Constraint
+            android:id="@id/text_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_container">
 
         </Constraint>
 
         <Constraint
-            android:id="@+id/btn_del"
-            android:layout_width="wrap_content"
+            android:id="@id/bottom_nav"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:alpha="0"
-            android:src="@drawable/ic_clear_gray_32dp"
-            android:tint="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:background="?android:attr/windowBackground"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_video">
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
 
-        </Constraint>
+
     </ConstraintSet>
 
     <ConstraintSet android:id="@+id/end">
         <Constraint
-            android:id="@+id/iv_video"
-            android:layout_width="80dp"
-            android:layout_height="80dp"
-            android:layout_marginStart="16dp"
-            android:layout_marginBottom="16dp"
-            android:contentDescription="@string/imv_cm"
-            android:scaleType="centerCrop"
-            android:src="@drawable/cm03"
-            app:layout_constraintBottom_toBottomOf="parent"
+            android:id="@+id/img_container"
+            android:layout_width="0dp"
+            android:layout_height="54dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/windowBackground"
+            app:layout_constrainedWidth="true"
+            app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+            app:layout_constraintEnd_toEndOf="parent"
             app:layout_constraintStart_toStartOf="parent" />
 
         <Constraint
-            android:id="@+id/btn_play"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_play_arrow_gray_32dp"
-            android:tint="@color/colorPrimary"
-            app:layout_constraintBottom_toBottomOf="parent"
-            app:layout_constraintEnd_toStartOf="@id/btn_del"
-            app:layout_constraintTop_toTopOf="@id/iv_video">
+            android:id="@+id/iv_img"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginTop="2dp"
+            android:layout_marginBottom="2dp"
+            android:contentDescription="@string/imv_cm"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cm03"
+            app:layout_constraintBottom_toBottomOf="@id/img_container"
+            app:layout_constraintDimensionRatio="H,1:1.5"
+            app:layout_constraintStart_toStartOf="@id/img_container"
+            app:layout_constraintTop_toTopOf="@id/img_container" />
 
-            <PropertySet android:alpha="1" />
+        <Constraint android:id="@+id/btn_play">
+            <PropertySet android:visibility="visible" />
+        </Constraint>
+
+        <Constraint android:id="@+id/btn_clear">
+            <PropertySet android:visibility="visible" />
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/text_bg"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            android:layout_marginStart="8dp"
+            android:layout_marginEnd="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:attr/windowBackground"
+            app:layout_constraintBottom_toTopOf="@id/bottom_nav"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_container" />
+
+        <Constraint
+            android:id="@+id/text_container"
+            android:layout_width="0dp"
+            android:layout_height="0dp"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintStart_toStartOf="parent"
+            app:layout_constraintTop_toBottomOf="@id/img_container">
 
         </Constraint>
 
         <Constraint
-            android:id="@+id/btn_del"
-            android:layout_width="wrap_content"
+            android:id="@+id/bottom_nav"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginStart="16dp"
-            android:layout_marginEnd="16dp"
-            android:layout_marginBottom="16dp"
-            android:src="@drawable/ic_clear_gray_32dp"
-            android:tint="@color/colorPrimary"
+            android:background="?android:attr/windowBackground"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toTopOf="@id/iv_video">
-
-            <PropertySet android:alpha="1" />
-
-        </Constraint>
-
+            app:layout_constraintStart_toStartOf="parent"
+            app:menu="@menu/bottom_nav_menu" />
     </ConstraintSet>
 
 </MotionScene>
