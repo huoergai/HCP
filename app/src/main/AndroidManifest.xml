@@ -32,7 +32,6 @@
         <activity android:name=".l11animation.L11Activity" />
         <activity android:name=".l12bitmap_drawable.L12Activity" />
         <activity android:name=".l13constraintlayout.L13Activity" />
-        <activity android:name=".l14motionlayout.L14Activity" />
         <activity android:name=".l21drag_nestedscroll.L21Activity" />
         <activity android:name=".l29gradle.L29Activity" />
         <activity android:name=".l36arch.L36Activity" />

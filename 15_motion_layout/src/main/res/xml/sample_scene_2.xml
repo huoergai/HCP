@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@id/start"
+        app:duration="3000">
+        <!--        app:motionInterpolator="bounce"-->
+
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@id/sample_view" />
+
+        <!--   <OnSwipe
+               app:dragDirection="dragDown"
+               app:touchAnchorId="@id/sample_view" />-->
+
+        <KeyFrameSet>
+            <KeyAttribute
+                android:rotation="180"
+                android:scaleX="2"
+                android:scaleY="2"
+                app:framePosition="50"
+                app:motionTarget="@id/sample_view" />
+
+            <!-- <KeyPosition
+                 app:framePosition="50"
+                 app:keyPositionType="pathRelative"
+                 app:motionTarget="@id/sample_view"
+                 app:pathMotionArc="flip"
+                 app:percentX="0.5"
+                 app:percentY="0.5" />
+             -->
+
+            <KeyPosition
+                app:curveFit="linear"
+                app:framePosition="50"
+                app:keyPositionType="pathRelative"
+                app:motionTarget="@id/sample_view"
+                app:pathMotionArc="none"
+                app:percentX="0.5"
+                app:percentY="0.5" />
+
+
+        </KeyFrameSet>
+
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/base">
+
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint android:id="@id/sample_view">
+            <Motion app:pathMotionArc="startVertical" />
+            <Layout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint android:id="@id/sample_view">
+
+            <Layout
+                android:layout_width="80dp"
+                android:layout_height="80dp"
+                app:layout_constraintBottom_toBottomOf="parent"
+                app:layout_constraintEnd_toEndOf="parent"
+                app:layout_constraintTop_toTopOf="parent" />
+
+            <!-- <Transform
+                 android:rotation="360"
+                 android:scaleX="1.5"
+                 android:scaleY="1.5"
+                 android:translationZ="12dp" />-->
+
+        </Constraint>
+    </ConstraintSet>
+
+</MotionScene>

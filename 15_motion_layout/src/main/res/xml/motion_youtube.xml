@@ -1,0 +1,123 @@
+<?xml version="1.0" encoding="utf-8"?>
+<MotionScene xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <Transition
+        app:constraintSetEnd="@id/end"
+        app:constraintSetStart="@id/start"
+        app:duration="1000">
+        <OnClick
+            app:clickAction="toggle"
+            app:targetId="@id/iv_video" />
+
+        <KeyFrameSet>
+            <KeyPosition
+                app:curveFit="linear"
+                app:framePosition="80"
+                app:keyPositionType="deltaRelative"
+                app:motionTarget="@id/iv_video"
+                app:percentWidth="0"
+                app:percentX="0.0"
+                app:percentY="0.8" />
+
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="80"
+                app:keyPositionType="deltaRelative"
+                app:motionTarget="@id/btn_play" />
+
+            <KeyAttribute
+                android:alpha="0"
+                app:framePosition="80"
+                app:keyPositionType="deltaRelative"
+                app:motionTarget="@id/btn_del" />
+
+
+        </KeyFrameSet>
+
+    </Transition>
+
+    <ConstraintSet android:id="@+id/start">
+        <Constraint
+            android:id="@+id/btn_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:alpha="0"
+            android:src="@drawable/ic_play_arrow_gray_32dp"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_del"
+            app:layout_constraintTop_toTopOf="@id/iv_video">
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/btn_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:alpha="0"
+            android:src="@drawable/ic_clear_gray_32dp"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_video">
+
+        </Constraint>
+    </ConstraintSet>
+
+    <ConstraintSet android:id="@+id/end">
+        <Constraint
+            android:id="@+id/iv_video"
+            android:layout_width="80dp"
+            android:layout_height="80dp"
+            android:layout_marginStart="16dp"
+            android:layout_marginBottom="16dp"
+            android:contentDescription="@string/imv_cm"
+            android:scaleType="centerCrop"
+            android:src="@drawable/cm03"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintStart_toStartOf="parent" />
+
+        <Constraint
+            android:id="@+id/btn_play"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_play_arrow_gray_32dp"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toStartOf="@id/btn_del"
+            app:layout_constraintTop_toTopOf="@id/iv_video">
+
+            <PropertySet android:alpha="1" />
+
+        </Constraint>
+
+        <Constraint
+            android:id="@+id/btn_del"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
+            android:layout_marginBottom="16dp"
+            android:src="@drawable/ic_clear_gray_32dp"
+            android:tint="@color/colorPrimary"
+            app:layout_constraintBottom_toBottomOf="parent"
+            app:layout_constraintEnd_toEndOf="parent"
+            app:layout_constraintTop_toTopOf="@id/iv_video">
+
+            <PropertySet android:alpha="1" />
+
+        </Constraint>
+
+    </ConstraintSet>
+
+</MotionScene>

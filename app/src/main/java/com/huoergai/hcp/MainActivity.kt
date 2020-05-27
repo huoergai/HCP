@@ -11,7 +11,6 @@ import com.huoergai.hcp.l10text_transfermation.L10Activity
 import com.huoergai.hcp.l11animation.L11Activity
 import com.huoergai.hcp.l12bitmap_drawable.L12Activity
 import com.huoergai.hcp.l13constraintlayout.L13Activity
-import com.huoergai.hcp.l14motionlayout.L14Activity
 import com.huoergai.hcp.l21drag_nestedscroll.L21Activity
 import com.huoergai.hcp.lesson36.L36Activity
 import com.huoergai.hcp.lesson37.L37Activity
@@ -39,7 +38,6 @@ class MainActivity : AppCompatActivity() {
             L11Activity::class.java,
             L12Activity::class.java,
             L13Activity::class.java,
-            L14Activity::class.java,
             L21Activity::class.java,
             L36Activity::class.java,
             L37Activity::class.java,
