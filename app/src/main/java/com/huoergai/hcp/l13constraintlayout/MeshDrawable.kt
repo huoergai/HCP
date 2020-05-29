@@ -21,9 +21,9 @@ class MeshDrawable : Drawable() {
     }
 
     override fun getOpacity(): Int {
-        return when {
-            paint.alpha == 0 -> PixelFormat.TRANSPARENT
-            paint.alpha == 0xff -> PixelFormat.OPAQUE
+        return when (paint.alpha) {
+            0 -> PixelFormat.TRANSPARENT
+            0xff -> PixelFormat.OPAQUE
             else -> PixelFormat.TRANSLUCENT
         }
     }

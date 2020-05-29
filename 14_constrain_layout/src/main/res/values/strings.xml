@@ -1,0 +1,9 @@
+<resources>
+    <string name="app_name">14_constrain_layout</string>
+    <string name="china_telcom">中国电信</string>
+    <string name="telcom_des">This book can be used in various ways. It can be read as a basic academic overview of the burgeoning genre of conferencing English or as a textbook for those studying applied linguistics. It can be used as training material by teachers of English for Specific/Academic Purposes (ESP/EAP) and as a guide or reference book for novice academics as regarding preferred patterns and forms of spoken conference English. For any and all readers, it is intended to serve as a source of spoken discourse analysis, explanations, suggestions, and considerations that might make academic conference participation or performance more fruitful and effective for both conference attendees and presenters.</string>
+    <string name="date">周日 22:42</string>
+    <string name="subscribe">subscribe</string>
+    <string name="user_name">用户名</string>
+    <string name="password">密码</string>
+</resources>
