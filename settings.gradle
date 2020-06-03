@@ -1,3 +1,5 @@
+include ':13_bitmap_drawable'
+include ':11_text_geo_transfer'
 include ':12_anim'
 include ':14_constrain_layout'
 include ':app'

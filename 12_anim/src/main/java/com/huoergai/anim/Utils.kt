@@ -34,7 +34,7 @@ class Utils {
 
         @JvmStatic
         fun getZForCamera(): Float {
-            return -8 * Resources.getSystem().displayMetrics.density
+            return -4 * Resources.getSystem().displayMetrics.density
         }
 
         @JvmStatic

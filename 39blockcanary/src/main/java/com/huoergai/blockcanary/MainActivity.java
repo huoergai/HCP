@@ -10,10 +10,6 @@ import android.view.View;
 
 import androidx.appcompat.app.AppCompatActivity;
 
-import com.github.moduth.blockcanary.internal.BlockInfo;
-
-import hugo.weaving.DebugLog;
-
 public class MainActivity extends AppCompatActivity {
 
     private Handler mh = new Handler(Looper.getMainLooper());
@@ -44,7 +40,7 @@ public class MainActivity extends AppCompatActivity {
         StackTraceElement[] traceElements = Looper.getMainLooper().getThread().getStackTrace();
         StringBuilder sb = new StringBuilder();
         for (StackTraceElement element : traceElements) {
-            sb.append(element.toString()).append(BlockInfo.SEPARATOR);
+            //  sb.append(element.toString()).append(BlockInfo.SEPARATOR);
         }
         Log.d("catchTrace", sb.toString());
 
@@ -53,7 +49,7 @@ public class MainActivity extends AppCompatActivity {
         m3();
     }
 
-    @DebugLog
+    // @DebugLog
     public void onClick(View v) {
        /* try {
             Thread.sleep(1000);
@@ -70,12 +66,12 @@ public class MainActivity extends AppCompatActivity {
         SystemClock.sleep(200);
     }
 
-    @DebugLog
+    // @DebugLog
     private void m2() {
         SystemClock.sleep(20);
     }
 
-    @DebugLog
+    // @DebugLog
     private void m1() {
         SystemClock.sleep(780);
     }
