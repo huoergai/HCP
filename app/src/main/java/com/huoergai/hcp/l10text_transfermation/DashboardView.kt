@@ -14,11 +14,12 @@ class DashboardView(context: Context, attrs: AttributeSet?) : View(context, attr
 
     companion object {
         private const val open_angle: Int = 120
-        private var radius: Float = 120f
-        private var index_count: Int = 20
-        private var current_index: Int = 8
-        private var pointer_length = radius * 0.65f
     }
+
+    private var radius: Float = 120f
+    private var index_count: Int = 20
+    private var current_index: Int = 8
+    private var pointer_length = radius * 0.65f
 
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
     private var indexPathEffect: PathDashPathEffect? = null

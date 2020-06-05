@@ -1,3 +1,4 @@
+include ':10_measure_xfermode'
 include ':13_bitmap_drawable'
 include ':11_text_geo_transfer'
 include ':12_anim'

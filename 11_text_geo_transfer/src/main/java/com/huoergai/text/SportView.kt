@@ -1,10 +1,9 @@
-package com.huoergai.hcp.l11animation
+package com.huoergai.text
 
 import android.content.Context
 import android.graphics.*
 import android.util.AttributeSet
 import android.view.View
-import com.huoergai.hcp.Utils
 
 class SportView(context: Context, attrs: AttributeSet) : View(context, attrs) {
     private val paint = Paint(Paint.ANTI_ALIAS_FLAG)
