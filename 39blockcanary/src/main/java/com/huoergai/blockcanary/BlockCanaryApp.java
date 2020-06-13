@@ -11,7 +11,7 @@ public class BlockCanaryApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        //   BlockCanary.install(this, new BlockCanaryContext()).start();
+        // BlockCanary.install(this, new BlockCanaryContext()).start();
 
         // 方式1 BlockCanary: 捕获超出阈值的主线程任务日志,
         // - 从主线程唯一的 mainLooper 中插入 mlogging(printer) 作为切入点;

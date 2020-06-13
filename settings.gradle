@@ -1,3 +1,6 @@
+include ':theme'
+include ':jni_course'
+include ':07_08_http'
 include ':10_measure_xfermode'
 include ':13_bitmap_drawable'
 include ':11_text_geo_transfer'

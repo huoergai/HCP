@@ -20,7 +20,6 @@ public class App extends Application {
         AppWatcher.INSTANCE.getObjectWatcher().watch(this, "the app");
 
         ReferenceQueue<Object> q = new ReferenceQueue<>();
-        PhantomReference<Object> pr = new PhantomReference<Object>(new LeakThread(),q);
-
+        PhantomReference<Object> pr = new PhantomReference<Object>(new LeakThread(), q);
     }
 }
