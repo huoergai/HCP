@@ -21,7 +21,7 @@ import okio.Source;
 /**
  * 组件化、插件化(反射)
  * <p>
- * dex: delvik executable
+ * dex: dalvik executable
  * <p>
  * dex
  * odex: optimized dex

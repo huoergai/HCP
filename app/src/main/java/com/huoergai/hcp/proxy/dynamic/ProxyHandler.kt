@@ -6,7 +6,6 @@ import java.lang.reflect.Method
 
 class ProxyHandler(private val cook: ICook) : InvocationHandler {
 
-
     override fun invoke(proxy: Any, method: Method, args: Array<out Any>): Any? {
         println("before cook")
         val result = method.invoke(cook, args)
