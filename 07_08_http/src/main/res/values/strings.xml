@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">07_08_Http</string>
+    <string name="connect">connect</string>
+    <string name="send">send</string>
+    <string name="disconnect">disconnect</string>
+</resources>
