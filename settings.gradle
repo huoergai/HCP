@@ -1,3 +1,4 @@
+include ':material_design'
 include ':theme'
 include ':jni_course'
 include ':07_08_http'

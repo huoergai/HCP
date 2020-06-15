@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+
+  <style name="ThemeOverlay.ShapeSize.Small" parent="">
+    <item name="shapeAppearanceSmallComponent">@style/ShapeAppearanceComponent.SmallCornerSize</item>
+    <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceComponent.SmallCornerSize</item>
+    <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceComponent.ExtraSmall</item>
+  </style>
+
+  <style name="ThemeOverlay.ShapeSize.Medium" parent="">
+    <item name="shapeAppearanceSmallComponent">@style/ShapeAppearanceComponent.MediumCornerSize</item>
+    <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceComponent.MediumCornerSize</item>
+    <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceComponent.SmallCornerSize</item>
+  </style>
+
+  <style name="ThemeOverlay.ShapeSize.Large" parent="">
+    <item name="shapeAppearanceSmallComponent">@style/ShapeAppearanceComponent.LargeCornerSize</item>
+    <item name="shapeAppearanceMediumComponent">@style/ShapeAppearanceComponent.LargeCornerSize</item>
+    <item name="shapeAppearanceLargeComponent">@style/ShapeAppearanceComponent.MediumCornerSize</item>
+  </style>
+
+  <style name="ShapeAppearanceComponent.ExtraSmall" parent="">
+    <item name="cornerSize">0dp</item>
+  </style>
+
+  <style name="ShapeAppearanceComponent.SmallCornerSize" parent="">
+    <item name="cornerSize">4dp</item>
+  </style>
+
+  <style name="ShapeAppearanceComponent.MediumCornerSize" parent="">
+    <item name="cornerSize">8dp</item>
+  </style>
+
+  <style name="ShapeAppearanceComponent.LargeCornerSize" parent="">
+    <item name="cornerSize">16dp</item>
+
+  </style>
+
+</resources>
