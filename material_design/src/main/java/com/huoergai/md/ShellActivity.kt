@@ -2,6 +2,7 @@ package com.huoergai.md
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
+import com.huoergai.md.extension.applyMaterialTransform
 import com.huoergai.md.fragment.IonBackPressed
 
 /**
@@ -11,9 +12,10 @@ import com.huoergai.md.fragment.IonBackPressed
 class ShellActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        setContentView(R.layout.activity_shell)
-
         val fragmentData: FeatureDemo = intent.getSerializableExtra("fragment_data") as FeatureDemo
+        applyMaterialTransform(getString(fragmentData.title))
+
+        setContentView(R.layout.activity_shell)
 
         fragmentData.fragment?.let {
             val b = Bundle()

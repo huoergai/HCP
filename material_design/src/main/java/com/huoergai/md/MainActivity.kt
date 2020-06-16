@@ -1,10 +1,12 @@
 package com.huoergai.md
 
+import android.app.ActivityOptions
 import android.content.Intent
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity
 import androidx.recyclerview.widget.GridLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.huoergai.md.extension.applyExitMaterialTransform
 
 /**
  * Material Design Practice
@@ -12,6 +14,7 @@ import androidx.recyclerview.widget.RecyclerView
 class MainActivity : AppCompatActivity() {
 
     override fun onCreate(savedInstanceState: Bundle?) {
+        applyExitMaterialTransform()
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
 
@@ -33,13 +36,15 @@ class MainActivity : AppCompatActivity() {
                 2
             )
         )
-        rvAdapter.onItemClick = {
+        rvAdapter.onItemClick = { itemView, data ->
             val intent = Intent(this, ShellActivity::class.java)
-            intent.putExtra("fragment_data", it)
-            startActivity(intent)
+            intent.putExtra("fragment_data", data)
+            val option =
+                ActivityOptions.makeSceneTransitionAnimation(this, itemView, getString(data.title))
+
+            // startActivity(intent)
+            startActivity(intent, option.toBundle())
         }
         rv.adapter = rvAdapter
-
-
     }
 }

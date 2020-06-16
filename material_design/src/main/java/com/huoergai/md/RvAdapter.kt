@@ -22,13 +22,13 @@ class RvAdapter(var features: List<FeatureDemo>) : RecyclerView.Adapter<RvAdapte
             iv.setImageResource(data.img)
             tv.text = itemView.resources.getText(data.title)
             itemView.setOnClickListener {
-                onItemClick(data)
+                onItemClick(it, data)
             }
         }
     }
 
     // set item onClick listener
-    var onItemClick: (FeatureDemo) -> Unit = {}
+    var onItemClick: (View, FeatureDemo) -> Unit = { itemView, data -> }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): RvItemHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.cat_toc_item, parent, false)
