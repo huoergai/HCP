@@ -2,6 +2,9 @@ package com.huoergai.blockcanary;
 
 import android.app.Application;
 
+import com.github.moduth.blockcanary.BlockCanary;
+import com.github.moduth.blockcanary.BlockCanaryContext;
+
 /**
  * 当前版本的 block canary 如果运行在 28/29 等高版本上会报一系列的权限拒绝错误
  * java.io.FileNotFoundException: /proc/stat: open failed: EACCES (Permission denied)
@@ -11,7 +14,7 @@ public class BlockCanaryApp extends Application {
     public void onCreate() {
         super.onCreate();
 
-        // BlockCanary.install(this, new BlockCanaryContext()).start();
+        BlockCanary.install(this, new BlockCanaryContext()).start();
 
         // 方式1 BlockCanary: 捕获超出阈值的主线程任务日志,
         // - 从主线程唯一的 mainLooper 中插入 mlogging(printer) 作为切入点;
