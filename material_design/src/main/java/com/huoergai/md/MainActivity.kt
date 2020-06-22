@@ -19,10 +19,10 @@ class MainActivity : AppCompatActivity() {
         setContentView(R.layout.activity_main)
 
         val demos = listOf(
-            FeatureDemo(R.string.cat_bottomappbar_title, R.drawable.ic_bottomappbar),
-            FeatureDemo(R.string.cat_bottom_nav_title, R.drawable.ic_bottomnavigation),
-            FeatureDemo(R.string.cat_bottomsheet_title, R.drawable.ic_bottomsheet),
-            FeatureDemo(R.string.cat_toc_buttons, R.drawable.ic_button)
+            FeatureModel(R.string.cat_bottomappbar_title, R.drawable.ic_bottomappbar),
+            FeatureModel(R.string.cat_bottom_nav_title, R.drawable.ic_bottomnavigation),
+            FeatureModel(R.string.cat_bottomsheet_title, R.drawable.ic_bottomsheet),
+            FeatureModel(R.string.cat_toc_buttons, R.drawable.ic_button)
         )
 
         val rv = findViewById<RecyclerView>(R.id.rv)
@@ -37,7 +37,7 @@ class MainActivity : AppCompatActivity() {
             )
         )
         rvAdapter.onItemClick = { itemView, data ->
-            val intent = Intent(this, ShellActivity::class.java)
+             val intent = Intent(this, ShellActivity::class.java)
             intent.putExtra("fragment_data", data)
             val option =
                 ActivityOptions.makeSceneTransitionAnimation(this, itemView, getString(data.title))

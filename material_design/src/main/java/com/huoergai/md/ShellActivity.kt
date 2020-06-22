@@ -12,7 +12,8 @@ import com.huoergai.md.fragment.IonBackPressed
 class ShellActivity : AppCompatActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
-        val fragmentData: FeatureDemo = intent.getSerializableExtra("fragment_data") as FeatureDemo
+        val fragmentData: FeatureModel =
+            intent.getSerializableExtra("fragment_data") as FeatureModel
         applyMaterialTransform(getString(fragmentData.title))
 
         setContentView(R.layout.activity_shell)

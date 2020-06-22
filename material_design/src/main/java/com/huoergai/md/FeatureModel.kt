@@ -13,7 +13,7 @@ import java.io.Serializable
  * D&T: 2020-06-15 03:46 PM
  * Des:
  */
-data class FeatureDemo(@StringRes val title: Int, @DrawableRes val img: Int) : Serializable {
+data class FeatureModel(@StringRes val title: Int, @DrawableRes val img: Int) : Serializable {
     var fragment: Fragment? = null
         get() {
             if (field == null) {
