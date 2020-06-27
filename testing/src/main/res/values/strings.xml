@@ -11,4 +11,22 @@
     <string name="hello_first_fragment">Hello first fragment</string>
     <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
     <string name="second_activity">second activity</string>
+
+    <string name="cat_bottomappbar_3d">3D</string>
+    <string name="cat_bottomappbar_accelerator">Accelerator</string>
+    <string name="cat_bottomappbar_search">Search</string>
+    <string name="cat_bottomappbar_dashboard">Dashboard</string>
+    <string name="cat_bottomappbar_navigation_button_content_description">Show navigation drawer</string>
+    <string name="cat_bottomappbar_fab_button_content_description">FAB</string>
+    <string name="user_name">user name</string>
+    <string name="password">password</string>
+    <string name="login">Login</string>
+    <string name="welcome_user">hello mia</string>
+    <string name="template_high_score">Highscore: %1$d</string>
+    <string name="template_score">Score: %1$d</string>
+    <string name="cocktail_question">What is the name of this cocktail?</string>
+    <string name="button_sour">button sour</string>
+    <string name="button_tea">amaretto tea</string>
+
+
 </resources>

@@ -62,5 +62,10 @@ class MainActivityTest {
         onView(withId(R.id.main_cl)).check(matches(isDisplayed()))
     }
 
+    @Test
+    fun shouldWelcomeUser_whenLogin() {
+
+
+    }
 
 }

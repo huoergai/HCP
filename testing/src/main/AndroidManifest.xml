@@ -9,10 +9,6 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.HCP">
-        <activity
-            android:name=".SecondaryActivity"
-            android:label="@string/title_activity_secondary"
-            android:theme="@style/Theme.HCP.NoActionBar"></activity>
         <activity android:name=".MainActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -20,6 +16,18 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity
+            android:name=".SecondaryActivity"
+            android:label="@string/title_activity_secondary"
+            android:theme="@style/Theme.HCP.NoActionBar" />
+
+        <activity
+            android:name=".section2.chapter4.ProductActivity"
+            android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
+
+        <activity android:name=".section2.chapter4.LoginActivity" />
+        <activity android:name=".section2.section2.CocktailGameActivity" />
     </application>
 
 </manifest>
