@@ -1,5 +1,9 @@
 package com.huoergai.testing.section2
 
+import com.huoergai.testing.section2.section2.Question
+import java.util.*
+import java.util.concurrent.ConcurrentLinkedDeque
+
 /**
  * D&T: 2020-06-26 23:30
  * Des:
@@ -11,6 +15,9 @@ class Game(highest: Int = 0) {
         private set
     var highestScore: Int = highest
         private set
+
+    val questions: Queue<Question> = ConcurrentLinkedDeque()
+
 
     /**
      * the first red test
@@ -38,5 +45,10 @@ class Game(highest: Int = 0) {
         }
     }
 
+    // --------------------- challenge --------------------
+
+    fun next(): Question? {
+        return questions.poll()
+    }
 
 }

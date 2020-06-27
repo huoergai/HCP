@@ -27,7 +27,16 @@ class Question(val correctOption: String, val incorrectOption: String) {
         answeredOption = option
         // return correctOption == answeredOption
         return isAnsweredCorrectly
+    }
 
+    // ----------------------- challenge ---------------------
+
+    fun getOptions(options: List<String>, sort: ((List<String>) -> List<String>)?): List<String> {
+        return if (sort == null) {
+            options.shuffled()
+        } else {
+            sort(options)
+        }
     }
 
 }
