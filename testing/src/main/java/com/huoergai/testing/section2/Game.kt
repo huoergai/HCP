@@ -1,23 +1,25 @@
 package com.huoergai.testing.section2
 
-import com.huoergai.testing.section2.section2.Question
-import java.util.*
-import java.util.concurrent.ConcurrentLinkedDeque
+import com.huoergai.testing.section2.cocktail.Question
+import com.huoergai.testing.section2.cocktail.Score
 
 /**
  * D&T: 2020-06-26 23:30
  * Des:
  */
-class Game(highest: Int = 0) {
-    var score = 0
-        private set
-    var highScore = 0
-        private set
-    var highestScore: Int = highest
-        private set
+class Game(
+    val score: Score = Score(0),
+    var questions: MutableList<Question> = arrayListOf()
+) {
+    // private val score = Score(highest)
 
-    val questions: Queue<Question> = ConcurrentLinkedDeque()
+    val currentScore: Int
+        get() = score.current
 
+    val highestScore: Int
+        get() = score.highest
+
+    private var questionIndex = -1
 
     /**
      * the first red test
@@ -31,24 +33,40 @@ class Game(highest: Int = 0) {
      */
     fun incrementScore1() {
         // increment score and high score when needed
-        score++
-        if (score > highScore) {
-            highScore++
-        }
+        //  currentScore++
+        score.increment()
+        //  if (currentScore > highScore) {
+        //      highScore++
+        //  }
     }
 
 
     fun incrementScore2() {
-        score++
-        if (score > highestScore) {
-            highestScore = score
-        }
+        // currentScore++
+        score.increment()
+        // if (currentScore > highest) {
+        //     highest = currentScore
+        // }
     }
 
     // --------------------- challenge --------------------
 
-    fun next(): Question? {
-        return questions.poll()
+    fun nextQuestion(): Question? {
+        if (questionIndex + 1 < questions.size) {
+            questionIndex++
+            return questions[questionIndex]
+        }
+        // return questions.getOrNull(0)
+        return null
+    }
+
+    fun answer(question: Question, option: String) {
+        val ret = question.answer(option)
+        if (ret) {
+            // incrementScore2()
+            score.increment()
+        }
+        questions.add(++questionIndex, question)
     }
 
 }

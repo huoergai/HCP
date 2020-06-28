@@ -5,8 +5,8 @@ import androidx.appcompat.widget.AppCompatEditText;
 import com.huoergai.hcp.l36arch.data.DataCenter;
 
 public class ViewModel {
-    private StringModel data1 = new StringModel();
-    private StringModel data2 = new StringModel();
+    private final StringModel data1 = new StringModel();
+    private final StringModel data2 = new StringModel();
 
     public ViewModel(AppCompatEditText et1, AppCompatEditText et2) {
         ViewBinder.bind(et1, data1);
@@ -18,4 +18,7 @@ public class ViewModel {
         data1.setValue(datas[0]);
         data2.setValue(datas[1]);
     }
+
+
+
 }

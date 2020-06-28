@@ -1,4 +1,4 @@
-package com.huoergai.testing.section2.section2
+package com.huoergai.testing.section2.cocktail
 
 import android.os.Bundle
 import androidx.appcompat.app.AppCompatActivity

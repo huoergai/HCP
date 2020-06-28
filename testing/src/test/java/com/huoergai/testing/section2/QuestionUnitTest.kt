@@ -1,9 +1,10 @@
 package com.huoergai.testing.section2
 
-import com.huoergai.testing.section2.section2.Question
+import com.huoergai.testing.section2.cocktail.Question
 import org.junit.jupiter.api.Assertions.*
 import org.junit.jupiter.api.BeforeEach
 import org.junit.jupiter.api.Test
+import org.mockito.Mockito
 
 /**
  * D&T: 2020-06-27 14:35
@@ -21,6 +22,9 @@ class QuestionUnitTest {
     @Test
     fun whenCreatingQuestion_shouldNotHaveAnsweredOption() {
         assertNull(question.answeredOption)
+
+        val qq = Mockito.mock(Question::class.java)
+
     }
 
     @Test

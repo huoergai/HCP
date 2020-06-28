@@ -27,7 +27,7 @@
             android:theme="@style/Theme.MaterialComponents.DayNight.NoActionBar" />
 
         <activity android:name=".section2.chapter4.LoginActivity" />
-        <activity android:name=".section2.section2.CocktailGameActivity" />
+        <activity android:name=".section2.cocktail.CocktailGameActivity" />
     </application>
 
 </manifest>
