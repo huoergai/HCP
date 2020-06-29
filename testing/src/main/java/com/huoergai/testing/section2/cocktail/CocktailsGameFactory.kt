@@ -7,9 +7,12 @@ import com.huoergai.testing.section2.Game
  * Des:
  */
 interface CocktailsGameFactory {
+
     fun buildGame(callback: Callback)
+
     interface Callback {
         fun onSuccess(game: Game)
+
         fun onError()
     }
 }

@@ -14,7 +14,9 @@ class CocktailsGameFactoryImpl(private val repo: CocktailsRepository) : Cocktail
         repo.getAlcoholic(object : RepositoryCallback<List<Cocktail>, String> {
 
             override fun onSuccess(cocktails: List<Cocktail>) {
-                callback.onSuccess(Game())
+                val questions = buildQuestions(cocktails)
+                val socre = Score(repo.getHighScore())
+                callback.onSuccess(Game(socre, questions))
             }
 
             override fun onError(e: String) {
@@ -22,5 +24,14 @@ class CocktailsGameFactoryImpl(private val repo: CocktailsRepository) : Cocktail
             }
 
         })
+    }
+
+    private fun buildQuestions(cocktails: List<Cocktail>): MutableList<Question> {
+        return cocktails.map { cocktail ->
+            val otherCocktial = cocktails.shuffled().first {
+                it != cocktail
+            }
+            Question(cocktail.drink, otherCocktial.drink, cocktail.drinkThumb)
+        }.toMutableList()
     }
 }

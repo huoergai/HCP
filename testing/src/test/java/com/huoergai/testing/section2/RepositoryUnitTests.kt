@@ -5,25 +5,35 @@ import com.huoergai.testing.section2.cocktail.CocktailsApi
 import com.huoergai.testing.section2.cocktail.CocktailsRepository
 import com.huoergai.testing.section2.cocktail.CocktailsRepositoryImpl
 import com.nhaarman.mockitokotlin2.*
-import org.junit.jupiter.api.BeforeEach
-import org.junit.jupiter.api.Test
+import org.junit.Before
+import org.junit.Test
+import org.junit.runner.RunWith
+import org.mockito.Mock
+import org.mockito.junit.MockitoJUnitRunner
 
 /**
  * D&T: 2020-06-28 20:23
  * Des:
  */
+@RunWith(MockitoJUnitRunner::class)
 class RepositoryUnitTests {
 
     private lateinit var repository: CocktailsRepository
+
+    @Mock
     private lateinit var api: CocktailsApi
+
+    @Mock
     private lateinit var sp: SharedPreferences
+
+    @Mock
     private lateinit var spEditor: SharedPreferences.Editor
 
-    @BeforeEach
+    @Before
     fun setup() {
-        api = mock()
-        spEditor = mock()
-        sp = mock()
+        // api = mock()
+        // spEditor = mock()
+        // sp = mock()
         whenever(sp.edit()).thenReturn(spEditor)
         repository = CocktailsRepositoryImpl(api, sp)
     }

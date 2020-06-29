@@ -6,7 +6,8 @@ package com.huoergai.testing.section2.cocktail
  */
 class Question(
     val correctOption: String,
-    val incorrectOption: String
+    val incorrectOption: String,
+    val imageUrl: String? = null
 ) {
 
     var answeredOption: String? = null
