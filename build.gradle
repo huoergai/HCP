@@ -5,9 +5,11 @@ buildscript {
         jcenter()
     }
     dependencies {
-        classpath 'com.android.tools.build:gradle:4.2.0-alpha02'
+        classpath 'com.android.tools.build:gradle:4.2.0-alpha04'
         classpath "org.jetbrains.kotlin:kotlin-gradle-plugin:$kotlin_version"
         // classpath 'com.jakewharton.hugo:hugo-plugin:1.2.1'
+
+        // classpath 'com.iwhys.sdkeditor:plugin:1.1.4'
     }
 }
 

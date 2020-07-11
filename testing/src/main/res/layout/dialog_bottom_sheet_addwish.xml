@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    android:layout_width="match_parent"
+    android:layout_height="320dp"
+    app:layout_behavior="com.google.android.material.bottomsheet.BottomSheetBehavior">
+
+    <com.google.android.material.textfield.TextInputEditText
+        android:id="@+id/dialog_et_wish"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="@string/wish_for"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <com.google.android.material.button.MaterialButton
+        android:id="@+id/dialog_btn_save"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="10dp"
+        android:text="@string/save"
+        app:layout_constraintTop_toBottomOf="@id/dialog_et_wish" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>

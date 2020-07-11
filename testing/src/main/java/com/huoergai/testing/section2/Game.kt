@@ -1,5 +1,6 @@
 package com.huoergai.testing.section2
 
+import android.util.Log
 import com.huoergai.testing.section2.cocktail.Question
 import com.huoergai.testing.section2.cocktail.Score
 
@@ -11,8 +12,6 @@ class Game(
     val score: Score = Score(0),
     var questions: MutableList<Question> = arrayListOf()
 ) {
-    // private val score = Score(highest)
-
     val currentScore: Int
         get() = score.current
 
@@ -31,22 +30,8 @@ class Game(
     /**
      * first green test refactored from previous red test
      */
-    fun incrementScore1() {
-        // increment score and high score when needed
-        //  currentScore++
+    fun incrementScore() {
         score.increment()
-        //  if (currentScore > highScore) {
-        //      highScore++
-        //  }
-    }
-
-
-    fun incrementScore2() {
-        // currentScore++
-        score.increment()
-        // if (currentScore > highest) {
-        //     highest = currentScore
-        // }
     }
 
     // --------------------- challenge --------------------
@@ -56,15 +41,16 @@ class Game(
             questionIndex++
             return questions[questionIndex]
         }
-        // return questions.getOrNull(0)
         return null
     }
 
     fun answer(question: Question, option: String) {
         val ret = question.answer(option)
         if (ret) {
-            // incrementScore2()
+            Log.d("Game", "correct!")
             score.increment()
+        } else {
+            Log.d("Game", "incorrect!")
         }
         questions.add(++questionIndex, question)
     }

@@ -5,14 +5,14 @@ repositories {
     jcenter()
 }
 dependencies {
-    implementation 'com.android.tools.build:gradle:4.2.0-alpha02'
+    implementation 'com.android.tools.build:gradle:4.2.0-alpha04'
     // implementation 'com.android.tools.build:gradle:3.6.3'
 }
 
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation group: 'org.ow2.asm', name: 'asm', version: '7.1'
-    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '7.1'
+    implementation group: 'org.ow2.asm', name: 'asm', version: '8.0.1'
+    implementation group: 'org.ow2.asm', name: 'asm-commons', version: '8.0.1'
 }
 
 

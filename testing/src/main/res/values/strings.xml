@@ -27,6 +27,10 @@
     <string name="cocktail_question">What is the name of this cocktail?</string>
     <string name="button_sour">button sour</string>
     <string name="button_tea">amaretto tea</string>
+    <string name="add_list">add list</string>
+    <string name="save">save</string>
+    <string name="wish_for">Who is this list for?</string>
 
+    <string name="demo_wish_list">Smart Watch\nKotlin Apprentice Book\nGoogle Home</string>
 
 </resources>

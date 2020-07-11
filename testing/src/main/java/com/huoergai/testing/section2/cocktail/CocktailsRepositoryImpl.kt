@@ -10,7 +10,7 @@ import android.content.SharedPreferences
 private const val HIGH_SCORE_KEY = "HIGH_SCORE_KEY"
 
 class CocktailsRepositoryImpl(
-    private val api: CocktailsApi,
+    private val api: CocktailsApi?,
     private val sp: SharedPreferences
 ) : CocktailsRepository {
 

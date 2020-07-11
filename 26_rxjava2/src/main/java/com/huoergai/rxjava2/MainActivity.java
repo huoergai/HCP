@@ -1,8 +1,6 @@
 package com.huoergai.rxjava2;
 
 import android.os.Bundle;
-import android.os.Handler;
-import android.os.Looper;
 import android.view.View;
 import android.widget.TextView;
 
@@ -100,7 +98,7 @@ public class MainActivity extends AppCompatActivity {
     private void rxjavaTest2() {
         Observable.interval(1, TimeUnit.SECONDS)
                 .observeOn(AndroidSchedulers.mainThread())
-                .subscribe(new Observer<Long>() {
+                 .subscribe(new Observer<Long>() {
                     @Override
                     public void onSubscribe(@NonNull Disposable d) {
                         tv.setText(R.string.start);
