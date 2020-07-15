@@ -31,7 +31,7 @@ class ExampleUnitTest {
         )
 
         val json = JsonData().apply {
-            type = "d:string"
+            // type = "d:string"
             content = jsonObj.toString()
         }
         val loginInfo = GetUserLoginInfo().apply {

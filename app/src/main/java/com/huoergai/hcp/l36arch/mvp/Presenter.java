@@ -17,6 +17,4 @@ public class Presenter {
     interface IView {
         void show(String s1, String s2);
     }
-
-
 }
