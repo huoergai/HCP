@@ -62,7 +62,7 @@ class AliMQTTDemoActivity : AppCompatActivity() {
 
         /* 创建MqttAndroidClient对象, 并设置回调接口 */
         mqttAndroidClient = MqttAndroidClient(applicationContext, host, clientId)
-        mqttAndroidClient!!.setCallback(object : MqttCallback {
+        mqttAndroidClient?.setCallback(object : MqttCallback {
             override fun connectionLost(cause: Throwable) {
                 Log.i(TAG, "connection lost")
             }
@@ -80,23 +80,20 @@ class AliMQTTDemoActivity : AppCompatActivity() {
             }
         })
 
-        try {
-            mqttAndroidClient!!.connect(mqttConnectOptions, null, object : IMqttActionListener {
-                override fun onSuccess(asyncActionToken: IMqttToken) {
-                    Log.i(TAG, "connect succeed")
-                    subscribeTopic(SUB_TOPIC)
-                }
+        mqttAndroidClient?.connect(mqttConnectOptions, null, object : IMqttActionListener {
+            override fun onSuccess(asyncActionToken: IMqttToken) {
+                Log.i(TAG, "connect succeed")
+                subscribeTopic(SUB_TOPIC)
+            }
 
-                override fun onFailure(
-                    asyncActionToken: IMqttToken,
-                    exception: Throwable
-                ) {
-                    Log.i(TAG, "connect failed")
-                }
-            })
-        } catch (e: MqttException) {
-            e.printStackTrace()
-        }
+            override fun onFailure(
+                asyncActionToken: IMqttToken,
+                exception: Throwable
+            ) {
+                Log.i(TAG, "connect failed")
+            }
+        })
+
     }
 
     /**
@@ -105,22 +102,18 @@ class AliMQTTDemoActivity : AppCompatActivity() {
      * @param topic mqtt主题
      */
     fun subscribeTopic(topic: String?) {
-        try {
-            mqttAndroidClient!!.subscribe(topic, 0, null, object : IMqttActionListener {
-                override fun onSuccess(asyncActionToken: IMqttToken) {
-                    Log.i(TAG, "subscribed succeed")
-                }
+        mqttAndroidClient?.subscribe(topic, 0, null, object : IMqttActionListener {
+            override fun onSuccess(asyncActionToken: IMqttToken) {
+                Log.i(TAG, "subscribed succeed")
+            }
 
-                override fun onFailure(
-                    asyncActionToken: IMqttToken,
-                    exception: Throwable
-                ) {
-                    Log.i(TAG, "subscribed failed")
-                }
-            })
-        } catch (e: MqttException) {
-            e.printStackTrace()
-        }
+            override fun onFailure(
+                asyncActionToken: IMqttToken,
+                exception: Throwable
+            ) {
+                Log.i(TAG, "subscribed failed")
+            }
+        })
     }
 
     /**
@@ -129,23 +122,18 @@ class AliMQTTDemoActivity : AppCompatActivity() {
      * @param payload 消息载荷
      */
     private fun publishMessage(payload: String) {
-        try {
-            val message = MqttMessage()
-            message.payload = payload.toByteArray()
-            message.qos = 0
-            mqttAndroidClient?.publish(PUB_TOPIC, message, null, object : IMqttActionListener {
-                override fun onSuccess(asyncActionToken: IMqttToken) {
-                    Log.i(TAG, "publish succeed!")
-                }
+        val message = MqttMessage()
+        message.payload = payload.toByteArray()
+        message.qos = 0
+        mqttAndroidClient?.publish(PUB_TOPIC, message, null, object : IMqttActionListener {
+            override fun onSuccess(asyncActionToken: IMqttToken) {
+                Log.i(TAG, "publish succeed!")
+            }
 
-                override fun onFailure(asyncActionToken: IMqttToken, exception: Throwable) {
-                    Log.i(TAG, "publish failed!")
-                }
-            })
-        } catch (e: MqttException) {
-            Log.e(TAG, e.toString())
-            e.printStackTrace()
-        }
+            override fun onFailure(asyncActionToken: IMqttToken, exception: Throwable) {
+                Log.i(TAG, "publish failed!")
+            }
+        })
     }
 
     /**

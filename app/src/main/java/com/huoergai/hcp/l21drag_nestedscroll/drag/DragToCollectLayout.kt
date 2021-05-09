@@ -4,16 +4,13 @@ import android.content.ClipData
 import android.content.Context
 import android.util.AttributeSet
 import android.view.DragEvent
-import android.view.MotionEvent
 import android.view.View
 import android.widget.ImageView
 import android.widget.LinearLayout
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.core.view.ViewCompat
-import androidx.customview.widget.ViewDragHelper
 import com.huoergai.hcp.R
-import kotlinx.android.synthetic.main.activity_l21_collect.view.*
 
 /**
  * D&T: 2020-05-17 02:50 PM

@@ -5,9 +5,5 @@ package com.huoergai.hcp.lesson41;
  * DES:
  */
 public interface Fruit {
-    void prtColor();
-
-    void eat();
-
     double getPrice();
 }
